@@ -1,0 +1,896 @@
+<!DOCTYPE html>
+<html lang="no">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Boligrådgiver Oslo — Smart eiendomsinvestering</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  :root {
+    --cream:   #F5F2EC;
+    --ink:     #1A1915;
+    --teal:    #1D9E75;
+    --teal-lt: #E1F5EE;
+    --teal-dk: #085041;
+    --coral:   #D85A30;
+    --warm:    #E8E3D9;
+    --muted:   #6B6860;
+    --serif:   'Cormorant Garamond', Georgia, serif;
+    --sans:    'DM Sans', sans-serif;
+  }
+
+  html { scroll-behavior: smooth; }
+
+  body {
+    font-family: var(--sans);
+    background: var(--cream);
+    color: var(--ink);
+    font-size: 16px;
+    line-height: 1.7;
+    overflow-x: hidden;
+  }
+
+  /* NAV */
+  nav {
+    position: fixed;
+    top: 0; left: 0; right: 0;
+    z-index: 100;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 1.2rem 4rem;
+    background: rgba(245,242,236,0.92);
+    backdrop-filter: blur(12px);
+    border-bottom: 0.5px solid rgba(26,25,21,0.1);
+    transition: padding 0.3s;
+  }
+  .nav-logo {
+    font-family: var(--serif);
+    font-size: 1.3rem;
+    font-weight: 600;
+    color: var(--ink);
+    text-decoration: none;
+    letter-spacing: 0.02em;
+  }
+  .nav-logo span { color: var(--teal); }
+  nav ul {
+    list-style: none;
+    display: flex;
+    gap: 2.5rem;
+  }
+  nav ul a {
+    text-decoration: none;
+    font-size: 0.82rem;
+    font-weight: 400;
+    color: var(--muted);
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    transition: color 0.2s;
+  }
+  nav ul a:hover { color: var(--ink); }
+  .nav-cta {
+    background: var(--ink);
+    color: var(--cream) !important;
+    padding: 0.55rem 1.4rem;
+    border-radius: 2px;
+    font-size: 0.78rem !important;
+    letter-spacing: 0.1em !important;
+    transition: background 0.2s !important;
+  }
+  .nav-cta:hover { background: var(--teal) !important; color: var(--cream) !important; }
+
+  /* HERO */
+  #hero {
+    min-height: 100vh;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    padding-top: 80px;
+  }
+  .hero-left {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    padding: 6rem 3rem 6rem 4rem;
+  }
+  .hero-eyebrow {
+    font-size: 0.75rem;
+    font-weight: 500;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    color: var(--teal);
+    margin-bottom: 1.5rem;
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+  }
+  .hero-eyebrow::before {
+    content: '';
+    display: inline-block;
+    width: 2rem;
+    height: 1px;
+    background: var(--teal);
+  }
+  .hero-h1 {
+    font-family: var(--serif);
+    font-size: clamp(3rem, 5vw, 5rem);
+    font-weight: 300;
+    line-height: 1.1;
+    color: var(--ink);
+    margin-bottom: 2rem;
+  }
+  .hero-h1 em {
+    font-style: italic;
+    color: var(--teal);
+  }
+  .hero-sub {
+    font-size: 1rem;
+    color: var(--muted);
+    max-width: 28rem;
+    line-height: 1.8;
+    margin-bottom: 2.5rem;
+  }
+  .btn-primary {
+    display: inline-block;
+    background: var(--teal);
+    color: #fff;
+    padding: 1rem 2.2rem;
+    border-radius: 2px;
+    text-decoration: none;
+    font-size: 0.85rem;
+    font-weight: 500;
+    letter-spacing: 0.06em;
+    transition: background 0.2s, transform 0.15s;
+    border: none;
+    cursor: pointer;
+    font-family: var(--sans);
+  }
+  .btn-primary:hover { background: var(--teal-dk); transform: translateY(-1px); }
+  .btn-ghost {
+    display: inline-block;
+    border: 1px solid var(--ink);
+    color: var(--ink);
+    padding: 1rem 2.2rem;
+    border-radius: 2px;
+    text-decoration: none;
+    font-size: 0.85rem;
+    font-weight: 400;
+    letter-spacing: 0.06em;
+    transition: background 0.2s;
+    margin-left: 1rem;
+  }
+  .btn-ghost:hover { background: var(--ink); color: var(--cream); }
+  .hero-right {
+    background: var(--ink);
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+    padding: 3rem;
+    position: relative;
+    overflow: hidden;
+  }
+  .hero-pattern {
+    position: absolute;
+    top: 0; left: 0; right: 0; bottom: 0;
+    opacity: 0.06;
+    background-image: repeating-linear-gradient(
+      0deg, transparent, transparent 39px, rgba(255,255,255,0.5) 39px, rgba(255,255,255,0.5) 40px
+    ), repeating-linear-gradient(
+      90deg, transparent, transparent 39px, rgba(255,255,255,0.5) 39px, rgba(255,255,255,0.5) 40px
+    );
+  }
+  .hero-stat-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1.5px;
+    position: relative;
+    z-index: 1;
+  }
+  .hero-stat {
+    background: rgba(255,255,255,0.04);
+    padding: 2rem;
+    border: 0.5px solid rgba(255,255,255,0.08);
+  }
+  .hero-stat-num {
+    font-family: var(--serif);
+    font-size: 3rem;
+    font-weight: 300;
+    color: var(--teal);
+    line-height: 1;
+    margin-bottom: 0.5rem;
+  }
+  .hero-stat-label {
+    font-size: 0.78rem;
+    color: rgba(255,255,255,0.5);
+    line-height: 1.5;
+    letter-spacing: 0.03em;
+  }
+
+  /* SECTION COMMON */
+  section { padding: 6rem 4rem; }
+  .section-label {
+    font-size: 0.72rem;
+    font-weight: 500;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    color: var(--teal);
+    margin-bottom: 1rem;
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+  }
+  .section-label::before {
+    content: '';
+    display: inline-block;
+    width: 1.5rem;
+    height: 1px;
+    background: var(--teal);
+  }
+  .section-h2 {
+    font-family: var(--serif);
+    font-size: clamp(2rem, 3.5vw, 3.2rem);
+    font-weight: 300;
+    line-height: 1.15;
+    color: var(--ink);
+    max-width: 30rem;
+    margin-bottom: 1rem;
+  }
+  .section-h2 em { font-style: italic; color: var(--teal); }
+  .section-intro {
+    color: var(--muted);
+    max-width: 36rem;
+    margin-bottom: 3.5rem;
+    font-size: 0.95rem;
+  }
+
+  /* SERVICES */
+  #services { background: var(--cream); }
+  .services-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1.5px;
+    background: rgba(26,25,21,0.08);
+    border: 0.5px solid rgba(26,25,21,0.08);
+  }
+  .service-card {
+    background: var(--cream);
+    padding: 2.5rem;
+    transition: background 0.25s;
+    position: relative;
+    overflow: hidden;
+  }
+  .service-card::after {
+    content: '';
+    position: absolute;
+    bottom: 0; left: 0; right: 0;
+    height: 2px;
+    background: var(--teal);
+    transform: scaleX(0);
+    transform-origin: left;
+    transition: transform 0.3s ease;
+  }
+  .service-card:hover { background: #F0EDE5; }
+  .service-card:hover::after { transform: scaleX(1); }
+  .service-num {
+    font-family: var(--serif);
+    font-size: 3.5rem;
+    font-weight: 300;
+    color: rgba(26,25,21,0.07);
+    line-height: 1;
+    margin-bottom: 1.5rem;
+  }
+  .service-icon {
+    width: 44px;
+    height: 44px;
+    background: var(--teal-lt);
+    border-radius: 2px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 1.2rem;
+  }
+  .service-icon svg { width: 20px; height: 20px; stroke: var(--teal-dk); fill: none; stroke-width: 1.5; }
+  .service-title {
+    font-family: var(--serif);
+    font-size: 1.4rem;
+    font-weight: 400;
+    color: var(--ink);
+    margin-bottom: 0.75rem;
+    line-height: 1.25;
+  }
+  .service-desc {
+    font-size: 0.88rem;
+    color: var(--muted);
+    line-height: 1.75;
+  }
+  .service-price {
+    margin-top: 1.5rem;
+    font-size: 0.78rem;
+    font-weight: 500;
+    letter-spacing: 0.08em;
+    color: var(--teal-dk);
+    text-transform: uppercase;
+    border-top: 0.5px solid rgba(26,25,21,0.1);
+    padding-top: 1rem;
+  }
+
+  /* CASES */
+  #cases { background: var(--ink); color: var(--cream); }
+  #cases .section-h2 { color: var(--cream); }
+  #cases .section-intro { color: rgba(255,255,255,0.5); }
+  .cases-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1px;
+    background: rgba(255,255,255,0.06);
+  }
+  .case-card {
+    background: var(--ink);
+    padding: 2.5rem;
+    border: 0.5px solid rgba(255,255,255,0.06);
+    transition: background 0.25s;
+  }
+  .case-card:hover { background: rgba(255,255,255,0.04); }
+  .case-tag {
+    display: inline-block;
+    font-size: 0.7rem;
+    font-weight: 500;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    background: rgba(29,158,117,0.15);
+    color: var(--teal);
+    padding: 0.3rem 0.8rem;
+    border-radius: 1px;
+    margin-bottom: 1.5rem;
+  }
+  .case-title {
+    font-family: var(--serif);
+    font-size: 1.3rem;
+    font-weight: 300;
+    color: var(--cream);
+    margin-bottom: 1rem;
+    line-height: 1.3;
+  }
+  .case-desc {
+    font-size: 0.85rem;
+    color: rgba(255,255,255,0.45);
+    line-height: 1.75;
+    margin-bottom: 1.5rem;
+  }
+  .case-numbers {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1rem;
+    border-top: 0.5px solid rgba(255,255,255,0.08);
+    padding-top: 1.5rem;
+  }
+  .case-num-label {
+    font-size: 0.7rem;
+    color: rgba(255,255,255,0.3);
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    margin-bottom: 0.2rem;
+  }
+  .case-num-val {
+    font-family: var(--serif);
+    font-size: 1.4rem;
+    font-weight: 300;
+    color: var(--teal);
+  }
+
+  /* HOW IT WORKS */
+  #process { background: var(--warm); }
+  .process-steps {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 0;
+    position: relative;
+  }
+  .process-steps::before {
+    content: '';
+    position: absolute;
+    top: 2.2rem;
+    left: 12.5%;
+    right: 12.5%;
+    height: 1px;
+    background: rgba(26,25,21,0.12);
+    z-index: 0;
+  }
+  .process-step { padding: 0 2rem; position: relative; z-index: 1; }
+  .step-circle {
+    width: 44px;
+    height: 44px;
+    border-radius: 50%;
+    background: var(--cream);
+    border: 1.5px solid rgba(26,25,21,0.15);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-family: var(--serif);
+    font-size: 1.1rem;
+    font-weight: 600;
+    color: var(--teal);
+    margin-bottom: 1.5rem;
+  }
+  .process-step.active .step-circle {
+    background: var(--teal);
+    border-color: var(--teal);
+    color: #fff;
+  }
+  .step-title {
+    font-family: var(--serif);
+    font-size: 1.1rem;
+    font-weight: 400;
+    color: var(--ink);
+    margin-bottom: 0.5rem;
+  }
+  .step-desc {
+    font-size: 0.83rem;
+    color: var(--muted);
+    line-height: 1.7;
+  }
+
+  /* BOOKING */
+  #booking { background: var(--cream); }
+  .booking-inner {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 5rem;
+    align-items: start;
+  }
+  .booking-perks { margin-top: 2.5rem; display: flex; flex-direction: column; gap: 1.2rem; }
+  .perk {
+    display: flex;
+    align-items: flex-start;
+    gap: 1rem;
+  }
+  .perk-dot {
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    background: var(--teal);
+    flex-shrink: 0;
+    margin-top: 0.55rem;
+  }
+  .perk-text { font-size: 0.9rem; color: var(--muted); line-height: 1.6; }
+  .perk-text strong { color: var(--ink); font-weight: 500; }
+
+  /* CONTACT */
+  #contact { background: var(--ink); }
+  #contact .section-label { color: var(--teal); }
+  #contact .section-h2 { color: var(--cream); }
+  #contact .section-intro { color: rgba(255,255,255,0.45); }
+  .contact-inner {
+    display: grid;
+    grid-template-columns: 1fr 1.4fr;
+    gap: 5rem;
+    align-items: start;
+  }
+  .contact-info { display: flex; flex-direction: column; gap: 2rem; margin-top: 0.5rem; }
+  .contact-item { display: flex; flex-direction: column; gap: 0.3rem; }
+  .contact-item-label {
+    font-size: 0.7rem;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: rgba(255,255,255,0.3);
+  }
+  .contact-item-val {
+    font-family: var(--serif);
+    font-size: 1.1rem;
+    font-weight: 300;
+    color: var(--cream);
+  }
+  .contact-item-val a { color: var(--teal); text-decoration: none; }
+  .contact-item-val a:hover { text-decoration: underline; }
+  form { display: flex; flex-direction: column; gap: 1.2rem; }
+  .form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 1.2rem; }
+  label { font-size: 0.75rem; letter-spacing: 0.08em; text-transform: uppercase; color: rgba(255,255,255,0.4); display: block; margin-bottom: 0.4rem; }
+  input, textarea, select {
+    width: 100%;
+    background: rgba(255,255,255,0.05);
+    border: 0.5px solid rgba(255,255,255,0.12);
+    border-radius: 2px;
+    padding: 0.9rem 1rem;
+    font-family: var(--sans);
+    font-size: 0.9rem;
+    color: var(--cream);
+    outline: none;
+    transition: border-color 0.2s, background 0.2s;
+  }
+  input:focus, textarea:focus, select:focus {
+    border-color: var(--teal);
+    background: rgba(29,158,117,0.05);
+  }
+  input::placeholder, textarea::placeholder { color: rgba(255,255,255,0.2); }
+  textarea { resize: vertical; min-height: 120px; }
+  select option { background: var(--ink); }
+  .form-note { font-size: 0.78rem; color: rgba(255,255,255,0.25); line-height: 1.6; }
+  .form-success {
+    display: none;
+    background: rgba(29,158,117,0.1);
+    border: 0.5px solid rgba(29,158,117,0.3);
+    border-radius: 2px;
+    padding: 1rem 1.25rem;
+    font-size: 0.9rem;
+    color: var(--teal);
+  }
+
+  /* FOOTER */
+  footer {
+    background: #111;
+    padding: 2.5rem 4rem;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    border-top: 0.5px solid rgba(255,255,255,0.06);
+  }
+  .footer-logo {
+    font-family: var(--serif);
+    font-size: 1.1rem;
+    font-weight: 400;
+    color: rgba(255,255,255,0.4);
+  }
+  .footer-logo span { color: var(--teal); }
+  .footer-copy { font-size: 0.78rem; color: rgba(255,255,255,0.2); }
+  .footer-links { display: flex; gap: 2rem; }
+  .footer-links a { font-size: 0.78rem; color: rgba(255,255,255,0.3); text-decoration: none; transition: color 0.2s; }
+  .footer-links a:hover { color: var(--teal); }
+
+  /* ANIMATIONS */
+  .fade-up {
+    opacity: 0;
+    transform: translateY(24px);
+    transition: opacity 0.6s ease, transform 0.6s ease;
+  }
+  .fade-up.visible { opacity: 1; transform: translateY(0); }
+  .fade-up.delay-1 { transition-delay: 0.1s; }
+  .fade-up.delay-2 { transition-delay: 0.2s; }
+  .fade-up.delay-3 { transition-delay: 0.3s; }
+  .fade-up.delay-4 { transition-delay: 0.4s; }
+
+  /* MOBILE */
+  @media (max-width: 900px) {
+    nav { padding: 1rem 1.5rem; }
+    nav ul { display: none; }
+    #hero { grid-template-columns: 1fr; }
+    .hero-left { padding: 5rem 1.5rem 3rem; }
+    .hero-right { min-height: 320px; }
+    section { padding: 4rem 1.5rem; }
+    .services-grid { grid-template-columns: 1fr; }
+    .cases-grid { grid-template-columns: 1fr; }
+    .process-steps { grid-template-columns: 1fr 1fr; gap: 2.5rem; }
+    .process-steps::before { display: none; }
+    .booking-inner { grid-template-columns: 1fr; gap: 2.5rem; }
+    .contact-inner { grid-template-columns: 1fr; gap: 2.5rem; }
+    .form-row { grid-template-columns: 1fr; }
+    footer { flex-direction: column; gap: 1rem; text-align: center; padding: 2rem 1.5rem; }
+    .footer-links { flex-wrap: wrap; justify-content: center; gap: 1rem; }
+  }
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <a href="#" class="nav-logo">Bolig<span>Rådgiver</span></a>
+  <ul>
+    <li><a href="#services">Tjenester</a></li>
+    <li><a href="#cases">Eksempler</a></li>
+    <li><a href="#process">Prosess</a></li>
+    <li><a href="#booking">Book møte</a></li>
+    <li><a href="#contact" class="nav-cta">Kontakt</a></li>
+  </ul>
+</nav>
+
+<!-- HERO -->
+<section id="hero">
+  <div class="hero-left">
+    <div class="hero-eyebrow fade-up">Eiendomsrådgivning · Oslo</div>
+    <h1 class="hero-h1 fade-up delay-1">Kjøp bolig med <em>gevinst</em>, ikke med tap.</h1>
+    <p class="hero-sub fade-up delay-2">Fra objektsøk og prisanalyse til oppussingsplan og budrunde — jeg hjelper deg å ta de riktige beslutningene, slik at investeringen din gir avkastning.</p>
+    <div class="fade-up delay-3">
+      <a href="#booking" class="btn-primary">Book gratis samtale</a>
+      <a href="#cases" class="btn-ghost">Se eksempler</a>
+    </div>
+  </div>
+  <div class="hero-right">
+    <div class="hero-pattern"></div>
+    <div class="hero-stat-grid fade-up delay-2">
+      <div class="hero-stat">
+        <div class="hero-stat-num">100%</div>
+        <div class="hero-stat-label">av mine flipp gir gevinst</div>
+      </div>
+      <div class="hero-stat">
+        <div class="hero-stat-num">340k</div>
+        <div class="hero-stat-label">snitt spart per kjøp etter rådgivning</div>
+      </div>
+      <div class="hero-stat">
+        <div class="hero-stat-num">Oslo</div>
+        <div class="hero-stat-label">primærmarked med lokal markedskunnskap</div>
+      </div>
+      <div class="hero-stat">
+        <div class="hero-stat-num">100%</div>
+        <div class="hero-stat-label">uavhengig — ingen provisjon fra megler</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- SERVICES -->
+<section id="services">
+  <div class="section-label fade-up">Tjenester</div>
+  <h2 class="section-h2 fade-up delay-1">Hva jeg <em>hjelper</em> deg med</h2>
+  <p class="section-intro fade-up delay-2">Enten du er førstegangskjøper eller erfaren investor — jeg tilpasser rådgivningen til ditt nivå og dine mål.</p>
+  <div class="services-grid">
+    <div class="service-card fade-up delay-1">
+      <div class="service-num">01</div>
+      <div class="service-icon">
+        <svg viewBox="0 0 24 24"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.35-4.35"/></svg>
+      </div>
+      <h3 class="service-title">Objektsøk & evaluering</h3>
+      <p class="service-desc">Jeg hjelper deg å finne riktig bolig i riktig område — og avdekker skjulte feil og muligheter før du byr. Vi vurderer beliggenhet, borettslagets økonomi, utvikling i nabolaget og realistisk prisnivå.</p>
+      <div class="service-price">Fra kr 2 900 per objekt</div>
+    </div>
+    <div class="service-card fade-up delay-2">
+      <div class="service-num">02</div>
+      <div class="service-icon">
+        <svg viewBox="0 0 24 24"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/><polyline points="10 9 9 9 8 9"/></svg>
+      </div>
+      <h3 class="service-title">Oppussingsplan & budsjett</h3>
+      <p class="service-desc">En realistisk plan for hva som bør gjøres, i hvilken rekkefølge, og hva det koster. Vi skiller mellom "must have" og "nice to have" — og setter av buffer for det uventede.</p>
+      <div class="service-price">Fra kr 3 900 per prosjekt</div>
+    </div>
+    <div class="service-card fade-up delay-3">
+      <div class="service-num">03</div>
+      <div class="service-icon">
+        <svg viewBox="0 0 24 24"><line x1="12" y1="1" x2="12" y2="23"/><path d="M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"/></svg>
+      </div>
+      <h3 class="service-title">Full investeringsstrategi</h3>
+      <p class="service-desc">For deg som vil se helheten: finansiell plan, kjøpsstrategi, backup-scenarioer, forsikringsråd og exit-strategi. Vi gjennomgår alt fra egenkapital til hva som skjer hvis renten stiger.</p>
+      <div class="service-price">Fra kr 6 900 pakke</div>
+    </div>
+  </div>
+</section>
+
+<!-- CASES -->
+<section id="cases">
+  <div class="section-label fade-up">Eksempler</div>
+  <h2 class="section-h2 fade-up delay-1">Resultater fra <em>virkelige</em> kjøp</h2>
+  <p class="section-intro fade-up delay-2">Alle tall er reelle — navn er anonymisert av hensyn til klientene.</p>
+  <div class="cases-grid" style="margin-top: 3rem;">
+    <div class="case-card fade-up delay-1">
+      <span class="case-tag">Sentrum</span>
+      <h3 class="case-title">2-roms leilighet, 19 kvm</h3>
+      <p class="case-desc">Kjøpt i juli, stille markedet. Et objekt med kosmetisk behov. Lagt en strategi for å vinne kvadratmeter og styling for en koselig opphold.</p>
+      <div class="case-numbers">
+        <div>
+          <div class="case-num-label">Kjøpsprisen</div>
+          <div class="case-num-val">2570k</div>
+        </div>
+        <div>
+          <div class="case-num-label">Oppussingskost</div>
+          <div class="case-num-val">150k</div>
+        </div>
+        <div>
+          <div class="case-num-label">Salgspris</div>
+          <div class="case-num-val">3280k</div>
+        </div>
+        <div>
+          <div class="case-num-label">Egne timer brukt</div>
+          <div class="case-num-val">50</div>
+        </div>
+      </div>
+    </div>
+    <div class="case-card fade-up delay-2">
+      <span class="case-tag">Frogner</span>
+      <h3 class="case-title">3-roms selveier med oppussingspotensial</h3>
+      <p class="case-desc">Investor ønsket flip-prosjekt. Vi gikk grundig gjennom dokumentasjon, avdekket ulovlig bruksendring og forhandlet ned prisen — noe som ga rom for full renovering med god margin.</p>
+      <div class="case-numbers">
+        <div>
+          <div class="case-num-label">Kjøpt under takst</div>
+          <div class="case-num-val">−350k</div>
+        </div>
+        <div>
+          <div class="case-num-label">Oppussingskost</div>
+          <div class="case-num-val">280k</div>
+        </div>
+        <div>
+          <div class="case-num-label">Verdiøkning</div>
+          <div class="case-num-val">+890k</div>
+        </div>
+        <div>
+          <div class="case-num-label">Tidshorisont</div>
+          <div class="case-num-val">14 mnd</div>
+        </div>
+      </div>
+    </div>
+    <div class="case-card fade-up delay-3">
+      <span class="case-tag">Sagene</span>
+      <h3 class="case-title">Leilighet til utleie — langsiktig strategi</h3>
+      <p class="case-desc">Par som ønsket sekundærbolig til utleie. Vi la en full finansiell plan inkl. rentescenarioer, valgte objekt i borettslag med lav fellesgjeld, og satte opp leieprisstrategi fra dag én.</p>
+      <div class="case-numbers">
+        <div>
+          <div class="case-num-label">Månedlig leieinntekt</div>
+          <div class="case-num-val">16k</div>
+        </div>
+        <div>
+          <div class="case-num-label">Positiv kontantstrøm</div>
+          <div class="case-num-val">+3.2k</div>
+        </div>
+        <div>
+          <div class="case-num-label">Yield</div>
+          <div class="case-num-val">4.8%</div>
+        </div>
+        <div>
+          <div class="case-num-label">Tidshoriont</div>
+          <div class="case-num-val">Langsiktig</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- PROCESS -->
+<section id="process">
+  <div class="section-label fade-up">Prosess</div>
+  <h2 class="section-h2 fade-up delay-1">Slik jobber <em>vi</em> sammen</h2>
+  <p class="section-intro fade-up delay-2">Fire steg fra første samtale til nøklene er i hånden din.</p>
+  <div class="process-steps" style="margin-top: 3.5rem;">
+    <div class="process-step fade-up delay-1">
+      <div class="step-circle active">1</div>
+      <h3 class="step-title">Gratis intro</h3>
+      <p class="step-desc">20 minutter der vi kartlegger dine mål, budsjett og risikotoleranse. Ingen forpliktelse.</p>
+    </div>
+    <div class="process-step fade-up delay-2">
+      <div class="step-circle">2</div>
+      <h3 class="step-title">Strategi & plan</h3>
+      <p class="step-desc">Vi legger en finansiell plan med backup-scenarioer og definerer hva vi ser etter i markedet.</p>
+    </div>
+    <div class="process-step fade-up delay-3">
+      <div class="step-circle">3</div>
+      <h3 class="step-title">Søk & analyse</h3>
+      <p class="step-desc">Jeg evaluerer objekter, gjennomgår dokumentasjon og gir deg konkret go/no-go med begrunnelse.</p>
+    </div>
+    <div class="process-step fade-up delay-4">
+      <div class="step-circle">4</div>
+      <h3 class="step-title">Kjøp & oppfølging</h3>
+      <p class="step-desc">Budstrategi, forsikringsråd og oppussingsplan — jeg er med deg helt til du har nøklene.</p>
+    </div>
+  </div>
+</section>
+
+<!-- BOOKING -->
+<section id="booking">
+  <div class="booking-inner">
+    <div class="booking-left">
+      <div class="section-label fade-up">Book møte</div>
+      <h2 class="section-h2 fade-up delay-1">Start med en <em>gratis</em> samtale</h2>
+      <p class="section-intro fade-up delay-2" style="margin-bottom: 0;">20 minutter er nok til å se om vi passer for hverandre — og til at du får konkrete svar på det du lurer på.</p>
+      <div class="booking-perks fade-up delay-3">
+        <div class="perk">
+          <div class="perk-dot"></div>
+          <p class="perk-text"><strong>Ingen forpliktelse.</strong> Introen er gratis og uforpliktende — du bestemmer selv om du vil gå videre.</p>
+        </div>
+        <div class="perk">
+          <div class="perk-dot"></div>
+          <p class="perk-text"><strong>Videosamtale eller fysisk.</strong> Vi kan møtes digitalt eller i Oslo sentrum, hva som passer deg best.</p>
+        </div>
+        <div class="perk">
+          <div class="perk-dot"></div>
+          <p class="perk-text"><strong>Forbered gjerne spørsmål.</strong> Jo mer du forteller om situasjonen din på forhånd, desto mer får du ut av samtalen.</p>
+        </div>
+        <div class="perk">
+          <div class="perk-dot"></div>
+          <p class="perk-text"><strong>Svar innen 24 timer.</strong> Jeg svarer alltid innen én arbeidsdag — også på DM på Instagram.</p>
+        </div>
+      </div>
+    </div>
+    <div class="fade-up delay-2">
+      <!-- Calendly inline widget begin -->
+      <div class="calendly-inline-widget" data-url="https://calendly.com/maya-kobchenko?hide_gdpr_banner=1&background_color=f7f5f0&text_color=1a1915&primary_color=1d9e75" style="min-width:320px;height:700px;"></div>
+      <script type="text/javascript" src="https://assets.calendly.com/assets/external/widget.js" async></script>
+      <!-- Calendly inline widget end -->
+    </div>
+  </div>
+</section>
+
+<!-- CONTACT -->
+<section id="contact">
+  <div class="section-label fade-up">Kontakt</div>
+  <h2 class="section-h2 fade-up delay-1">Ta <em>kontakt</em> direkte</h2>
+  <p class="section-intro fade-up delay-2">Foretrekker du å skrive? Fyll ut skjemaet så svarer jeg innen 24 timer.</p>
+  <div class="contact-inner" style="margin-top: 3rem;">
+    <div class="contact-info fade-up delay-1">
+      <div class="contact-item">
+        <div class="contact-item-label">E-post</div>
+        <div class="contact-item-val"><a href="mailto:kobchenko.maya@gmail.com">kobchenko.maya@gmail.com</a></div>
+      </div>
+      <div class="contact-item">
+        <div class="contact-item-label">Telefon</div>
+        <div class="contact-item-val">+47 413 98 183</div>
+      </div>
+      <div class="contact-item">
+        <div class="contact-item-label">Instagram</div>
+        <div class="contact-item-val"><a href="https://instagram.com/mayakobchenko_byggservice" target="_blank">@mayakobchenko_byggservice</a></div>
+      </div>
+      <div class="contact-item">
+        <div class="contact-item-label">Område</div>
+        <div class="contact-item-val">Oslo & omegn</div>
+      </div>
+      <div class="contact-item">
+        <div class="contact-item-label">Responstid</div>
+        <div class="contact-item-val">Innen 24 timer på hverdager</div>
+      </div>
+    </div>
+    <div class="fade-up delay-2">
+      <form action="https://formspree.io/f/DITT-FORM-ID" method="POST">
+        <div class="form-row">
+          <div>
+            <label for="name">Navn</label>
+            <input type="text" id="name" name="name" placeholder="Ditt fulle navn" required>
+          </div>
+          <div>
+            <label for="email">E-post</label>
+            <input type="email" id="email" name="email" placeholder="din@epost.no" required>
+          </div>
+        </div>
+        <div>
+          <label for="service">Hva trenger du hjelp med?</label>
+          <select id="service" name="service">
+            <option value="">Velg tjeneste...</option>
+            <option>Objektsøk & evaluering</option>
+            <option>Oppussingsplan & budsjett</option>
+            <option>Full investeringsstrategi</option>
+            <option>Annet / usikker</option>
+          </select>
+        </div>
+        <div>
+          <label for="message">Melding</label>
+          <textarea id="message" name="message" placeholder="Fortell litt om situasjonen din — budsjett, tidshorisont, hva du ser etter..."></textarea>
+        </div>
+        <button type="submit" class="btn-primary" style="width: 100%; justify-content: center;">Send melding →</button>
+        <p class="form-note">Informasjonen du oppgir brukes kun til å besvare henvendelsen din. Ingen spam, ingen videresalg.</p>
+        <div class="form-success" id="form-success">Takk! Jeg svarer deg innen 24 timer.</div>
+      </form>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-logo">Bolig<span>Rådgiver</span></div>
+  <div class="footer-copy">© 2025 · Eiendomsrådgivning Oslo</div>
+  <div class="footer-links">
+    <a href="#services">Tjenester</a>
+    <a href="#cases">Eksempler</a>
+    <a href="#booking">Book møte</a>
+    <a href="#contact">Kontakt</a>
+  </div>
+</footer>
+
+<script>
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(e => { if (e.isIntersecting) e.target.classList.add('visible'); });
+  }, { threshold: 0.12 });
+  document.querySelectorAll('.fade-up').forEach(el => observer.observe(el));
+
+  document.querySelector('form').addEventListener('submit', async function(e) {
+    e.preventDefault();
+    const btn = this.querySelector('button[type=submit]');
+    btn.textContent = 'Sender...';
+    btn.disabled = true;
+    try {
+      const res = await fetch(this.action, { method: 'POST', body: new FormData(this), headers: { 'Accept': 'application/json' } });
+      if (res.ok) {
+        this.reset();
+        document.getElementById('form-success').style.display = 'block';
+        btn.textContent = 'Sendt ✓';
+      } else { btn.textContent = 'Prøv igjen'; btn.disabled = false; }
+    } catch { btn.textContent = 'Prøv igjen'; btn.disabled = false; }
+  });
+</script>
+</body>
+</html>
