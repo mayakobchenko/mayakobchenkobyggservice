@@ -111,16 +111,18 @@
   .cases-track-outer { overflow: hidden; }
   .cases-track {
     display: flex;
+    gap: 0;
     transition: transform 0.45s cubic-bezier(0.4,0,0.2,1);
+    will-change: transform;
   }
   .case-card {
     background: rgba(255,255,255,0.03);
     padding: 2.5rem;
     border: 0.5px solid rgba(255,255,255,0.08);
-    flex: 0 0 calc(33.333% - 1px);
-    min-width: calc(33.333% - 1px);
-    margin-right: 1px;
+    flex: 0 0 33.333%;
+    min-width: 33.333%;
     transition: background 0.25s;
+    box-sizing: border-box;
   }
   .case-card:hover { background: rgba(255,255,255,0.06); }
   .case-tag { display: inline-block; font-size: 0.7rem; font-weight: 500; letter-spacing: 0.1em; text-transform: uppercase; background: rgba(29,158,117,0.15); color: var(--teal); padding: 0.3rem 0.8rem; border-radius: 1px; margin-bottom: 1.5rem; }
@@ -220,7 +222,7 @@
     .hero-right { min-height: 400px; padding: 1.5rem; }
     section { padding: 4rem 1.5rem; }
     .services-grid { grid-template-columns: 1fr; }
-    .case-card { flex: 0 0 calc(100% - 1px); min-width: calc(100% - 1px); }
+    .case-card { flex: 0 0 100%; min-width: 100%; }
     .process-steps { grid-template-columns: 1fr 1fr; gap: 2.5rem; }
     .process-steps::before { display: none; }
     .booking-inner { grid-template-columns: 1fr; gap: 2.5rem; }
@@ -230,7 +232,7 @@
     .footer-links { flex-wrap: wrap; justify-content: center; gap: 1rem; }
   }
   @media (max-width: 600px) {
-    .case-card { flex: 0 0 calc(100% - 1px); min-width: calc(100% - 1px); }
+    .case-card { flex: 0 0 100%; min-width: 100%; }
   }
 </style>
 </head>
@@ -359,7 +361,7 @@
 
         <!-- CASE 4 — add more cases here the same way -->
         <div class="case-card">
-          <span class="case-tag">Høybråten</span>
+          <span class="case-tag">Ditt neste eksempel</span>
           <h3 class="case-title">Legg til ditt neste case her</h3>
           <p class="case-desc">Kopier dette kortet og fyll inn detaljer fra ditt neste prosjekt. Karusellen håndterer automatisk så mange kort du vil legge til.</p>
           <div class="case-numbers">
@@ -370,19 +372,6 @@
           </div>
         </div>
 
-       <!-- CASE 5 — add more cases here the same way -->
-        <div class="case-card">
-          <span class="case-tag">Frogner</span>
-          <h3 class="case-title">Eksklusiv leilighet på 140 kvm</h3>
-          <p class="case-desc">Kopier dette kortet og fyll inn detaljer fra ditt neste prosjekt. Karusellen håndterer automatisk så mange kort du vil legge til.</p>
-          <div class="case-numbers">
-            <div><div class="case-num-label">Kjøpspris</div><div class="case-num-val">—</div></div>
-            <div><div class="case-num-label">Oppussingskost</div><div class="case-num-val">—</div></div>
-            <div><div class="case-num-label">Salgspris</div><div class="case-num-val">—</div></div>
-            <div><div class="case-num-label">Tidshorisont</div><div class="case-num-val">—</div></div>
-          </div>
-        </div>
-       
       </div><!-- end track -->
     </div><!-- end track-outer -->
 
@@ -465,7 +454,7 @@
       <div class="contact-item"><div class="contact-item-label">Responstid</div><div class="contact-item-val">Innen 24 timer på hverdager</div></div>
     </div>
     <div class="fade-up delay-2">
-      <form action="https://formspree.io/f/xwvzrvkq" method="POST">
+      <form action="https://formspree.io/f/DITT-FORM-ID" method="POST">
         <div class="form-row">
           <div><label for="name">Navn</label><input type="text" id="name" name="name" placeholder="Ditt fulle navn" required></div>
           <div><label for="email">E-post</label><input type="email" id="email" name="email" placeholder="din@epost.no" required></div>
@@ -525,19 +514,35 @@
     const dotsContainer = document.getElementById('casesDots');
     const prevBtn = document.getElementById('casesPrev');
     const nextBtn = document.getElementById('casesNext');
-
-    const cards = track.querySelectorAll('.case-card');
+    const cards = Array.from(track.querySelectorAll('.case-card'));
     const total = cards.length;
-    let visibleCount = window.innerWidth <= 600 ? 1 : window.innerWidth <= 900 ? 1 : 3;
+    let visibleCount = 3;
     let current = 0;
-    const pages = Math.ceil(total / visibleCount);
 
-    // Build dots
+    function getVisible() {
+      return window.innerWidth <= 900 ? 1 : 3;
+    }
+
+    function getPages() {
+      return Math.ceil(total / visibleCount);
+    }
+
+    function setWidths() {
+      visibleCount = getVisible();
+      const pct = 100 / visibleCount;
+      cards.forEach(c => {
+        c.style.flex = `0 0 ${pct}%`;
+        c.style.minWidth = `${pct}%`;
+      });
+    }
+
     function buildDots() {
       dotsContainer.innerHTML = '';
+      const pages = getPages();
       for (let i = 0; i < pages; i++) {
         const d = document.createElement('button');
-        d.className = 'cases-dot' + (i === 0 ? ' active' : '');
+        d.className = 'cases-dot' + (i === current ? ' active' : '');
+        d.setAttribute('aria-label', `Side ${i + 1}`);
         d.addEventListener('click', () => goTo(i));
         dotsContainer.appendChild(d);
       }
@@ -550,27 +555,20 @@
     }
 
     function goTo(page) {
+      const pages = getPages();
       current = Math.max(0, Math.min(page, pages - 1));
-      const pct = (current * visibleCount * 100) / total;
-      track.style.transform = `translateX(-${pct}%)`;
+      // Move by exactly one card-width * visibleCount per page
+      const offset = current * visibleCount * (100 / total);
+      track.style.transform = `translateX(-${offset}%)`;
       updateDots();
       prevBtn.disabled = current === 0;
-      nextBtn.disabled = current === pages - 1;
-    }
-
-    // Set card widths via flex
-    function setWidths() {
-      visibleCount = window.innerWidth <= 900 ? 1 : 3;
-      cards.forEach(c => {
-        c.style.flex = `0 0 calc(${100 / visibleCount}% - 1px)`;
-        c.style.minWidth = `calc(${100 / visibleCount}% - 1px)`;
-      });
+      nextBtn.disabled = current >= pages - 1;
     }
 
     prevBtn.addEventListener('click', () => goTo(current - 1));
     nextBtn.addEventListener('click', () => goTo(current + 1));
 
-    // Touch/swipe support
+    // Touch/swipe
     let startX = 0;
     track.addEventListener('touchstart', e => { startX = e.touches[0].clientX; }, { passive: true });
     track.addEventListener('touchend', e => {
@@ -578,11 +576,14 @@
       if (Math.abs(diff) > 50) goTo(diff > 0 ? current + 1 : current - 1);
     });
 
-    setWidths();
-    buildDots();
-    goTo(0);
+    function init() {
+      setWidths();
+      buildDots();
+      goTo(0);
+    }
 
-    window.addEventListener('resize', () => { setWidths(); buildDots(); goTo(0); });
+    init();
+    window.addEventListener('resize', init);
   })();
 </script>
 </body>
