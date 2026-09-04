@@ -1,0 +1,530 @@
+<!DOCTYPE html>
+<html lang="no">
+<head>
+<meta charset="UTF-8">
+<meta name="google-site-verification" content="pagw5NrNfbaHdTpmxirdxknLK4zjhlRbPluDPpYVLiM" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Boligrådgiver Oslo — Smart eiendomsinvestering</title>
+<meta name="description" content="Maya Kobchenko — eiendomsrådgiver i Oslo. Hjelper deg kjøpe bolig med gevinst. Objektsøk, oppussingsplan og full investeringsstrategi.">
+<meta name="keywords" content="boligrådgiver Oslo, eiendomsrådgivning, Maya Kobchenko, boligkjøp Oslo, investeringsstrategi bolig, byggservice Oslo">
+<meta name="author" content="Maya Kobchenko">
+<meta property="og:title" content="BoligRådgiver Oslo — Maya Kobchenko">
+<meta property="og:description" content="Kjøp bolig med gevinst, ikke med tap. Eiendomsrådgivning i Oslo.">
+<meta property="og:url" content="https://mayakobchenkobyggservice.no">
+<meta property="og:type" content="website">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+  :root {
+    --cream:#F5F2EC; --ink:#1A1915; --teal:#1D9E75; --teal-lt:#E1F5EE;
+    --teal-dk:#085041; --coral:#D85A30; --warm:#E8E3D9; --muted:#6B6860;
+    --serif:'Cormorant Garamond',Georgia,serif; --sans:'DM Sans',sans-serif;
+  }
+  html { scroll-behavior: smooth; }
+  body { font-family: var(--sans); background: var(--cream); color: var(--ink); font-size: 16px; line-height: 1.7; overflow-x: hidden; }
+
+  nav { position: fixed; top:0; left:0; right:0; z-index:100; display:flex; align-items:center; justify-content:space-between; padding:1.2rem 4rem; background:rgba(245,242,236,0.92); backdrop-filter:blur(12px); border-bottom:0.5px solid rgba(26,25,21,0.1); }
+  .nav-logo { font-family:var(--serif); font-size:1.3rem; font-weight:600; color:var(--ink); text-decoration:none; letter-spacing:0.02em; }
+  .nav-logo span { color:var(--teal); }
+  nav ul { list-style:none; display:flex; gap:2.5rem; }
+  nav ul a { text-decoration:none; font-size:0.82rem; font-weight:400; color:var(--muted); letter-spacing:0.08em; text-transform:uppercase; transition:color 0.2s; }
+  nav ul a:hover { color:var(--ink); }
+  .nav-cta { background:var(--ink); color:var(--cream) !important; padding:0.55rem 1.4rem; border-radius:2px; font-size:0.78rem !important; letter-spacing:0.1em !important; transition:background 0.2s !important; }
+  .nav-cta:hover { background:var(--teal) !important; }
+
+  #hero { min-height:100vh; display:grid; grid-template-columns:1fr 1fr; padding-top:80px; }
+  .hero-left { display:flex; flex-direction:column; justify-content:center; padding:6rem 3rem 6rem 4rem; }
+  .hero-eyebrow { font-size:0.75rem; font-weight:500; letter-spacing:0.15em; text-transform:uppercase; color:var(--teal); margin-bottom:1.5rem; display:flex; align-items:center; gap:0.75rem; }
+  .hero-eyebrow::before { content:''; display:inline-block; width:2rem; height:1px; background:var(--teal); }
+  .hero-h1 { font-family:var(--serif); font-size:clamp(3rem,5vw,5rem); font-weight:300; line-height:1.1; color:var(--ink); margin-bottom:2rem; }
+  .hero-h1 em { font-style:italic; color:var(--teal); }
+  .hero-sub { font-size:1rem; color:var(--muted); max-width:28rem; line-height:1.8; margin-bottom:2.5rem; }
+  .btn-primary { display:inline-block; background:var(--teal); color:#fff; padding:1rem 2.2rem; border-radius:2px; text-decoration:none; font-size:0.85rem; font-weight:500; letter-spacing:0.06em; transition:background 0.2s,transform 0.15s; border:none; cursor:pointer; font-family:var(--sans); }
+  .btn-primary:hover { background:var(--teal-dk); transform:translateY(-1px); }
+  .btn-ghost { display:inline-block; border:1px solid var(--ink); color:var(--ink); padding:1rem 2.2rem; border-radius:2px; text-decoration:none; font-size:0.85rem; font-weight:400; letter-spacing:0.06em; transition:background 0.2s; margin-left:1rem; }
+  .btn-ghost:hover { background:var(--ink); color:var(--cream); }
+  .hero-right { background:var(--ink); display:grid; grid-template-rows:1fr; padding:3rem; position:relative; overflow:hidden; }
+  .hero-pattern { position:absolute; top:0; left:0; right:0; bottom:0; opacity:0.06; background-image:repeating-linear-gradient(0deg,transparent,transparent 39px,rgba(255,255,255,0.5) 39px,rgba(255,255,255,0.5) 40px),repeating-linear-gradient(90deg,transparent,transparent 39px,rgba(255,255,255,0.5) 39px,rgba(255,255,255,0.5) 40px); }
+  .hero-stat-grid { display:grid; grid-template-columns:1fr 1fr; grid-template-rows:1fr 1fr; gap:1.5px; position:relative; z-index:1; align-self:stretch; }
+  .hero-stat { background:rgba(255,255,255,0.04); padding:2rem; border:0.5px solid rgba(255,255,255,0.08); display:flex; flex-direction:column; justify-content:center; }
+  .hero-stat-num { font-family:var(--serif); font-size:clamp(2rem,3vw,3rem); font-weight:300; color:var(--teal); line-height:1; margin-bottom:0.5rem; }
+  .hero-stat-label { font-size:0.78rem; color:rgba(255,255,255,0.5); line-height:1.5; letter-spacing:0.03em; }
+
+  section { padding:6rem 4rem; }
+  .section-label { font-size:0.72rem; font-weight:500; letter-spacing:0.15em; text-transform:uppercase; color:var(--teal); margin-bottom:1rem; display:flex; align-items:center; gap:0.75rem; }
+  .section-label::before { content:''; display:inline-block; width:1.5rem; height:1px; background:var(--teal); }
+  .section-h2 { font-family:var(--serif); font-size:clamp(2rem,3.5vw,3.2rem); font-weight:300; line-height:1.15; color:var(--ink); max-width:30rem; margin-bottom:1rem; }
+  .section-h2 em { font-style:italic; color:var(--teal); }
+  .section-intro { color:var(--muted); max-width:36rem; margin-bottom:3.5rem; font-size:0.95rem; }
+
+  #services { background:var(--cream); }
+  .services-grid { display:grid; grid-template-columns:repeat(3,1fr); gap:1.5px; background:rgba(26,25,21,0.08); border:0.5px solid rgba(26,25,21,0.08); }
+  .service-card { background:var(--cream); padding:2.5rem; transition:background 0.25s; position:relative; overflow:hidden; }
+  .service-card::after { content:''; position:absolute; bottom:0; left:0; right:0; height:2px; background:var(--teal); transform:scaleX(0); transform-origin:left; transition:transform 0.3s ease; }
+  .service-card:hover { background:#F0EDE5; }
+  .service-card:hover::after { transform:scaleX(1); }
+  .service-num { font-family:var(--serif); font-size:3.5rem; font-weight:300; color:rgba(26,25,21,0.07); line-height:1; margin-bottom:1.5rem; }
+  .service-icon { width:44px; height:44px; background:var(--teal-lt); border-radius:2px; display:flex; align-items:center; justify-content:center; margin-bottom:1.2rem; }
+  .service-icon svg { width:20px; height:20px; stroke:var(--teal-dk); fill:none; stroke-width:1.5; }
+  .service-title { font-family:var(--serif); font-size:1.4rem; font-weight:400; color:var(--ink); margin-bottom:0.75rem; line-height:1.25; }
+  .service-desc { font-size:0.88rem; color:var(--muted); line-height:1.75; }
+
+  #cases { background:var(--ink); color:var(--cream); }
+  #cases .section-h2 { color:var(--cream); }
+  #cases .section-intro { color:rgba(255,255,255,0.5); }
+  .cases-carousel-wrap { position:relative; }
+  .cases-track-outer { overflow:hidden; scroll-behavior:smooth; }
+  .cases-track { display:flex; }
+  .case-card { background:rgba(255,255,255,0.03); padding:2.5rem; border:0.5px solid rgba(255,255,255,0.08); flex-shrink:0; box-sizing:border-box; transition:background 0.25s; }
+  .case-card:hover { background:rgba(255,255,255,0.06); }
+  .case-tag { display:inline-block; font-size:0.7rem; font-weight:500; letter-spacing:0.1em; text-transform:uppercase; background:rgba(29,158,117,0.15); color:var(--teal); padding:0.3rem 0.8rem; border-radius:1px; margin-bottom:1.5rem; }
+  .case-title { font-family:var(--serif); font-size:1.3rem; font-weight:300; color:var(--cream); margin-bottom:1rem; line-height:1.3; }
+  .case-desc { font-size:0.85rem; color:rgba(255,255,255,0.45); line-height:1.75; margin-bottom:1.5rem; }
+  .case-numbers { display:grid; grid-template-columns:1fr 1fr; gap:1rem; border-top:0.5px solid rgba(255,255,255,0.08); padding-top:1.5rem; }
+  .case-num-label { font-size:0.7rem; color:rgba(255,255,255,0.3); letter-spacing:0.08em; text-transform:uppercase; margin-bottom:0.2rem; }
+  .case-num-val { font-family:var(--serif); font-size:1.4rem; font-weight:300; color:var(--teal); }
+  .cases-controls { display:flex; align-items:center; justify-content:space-between; margin-top:2rem; }
+  .cases-dots { display:flex; gap:8px; }
+  .cases-dot { width:6px; height:6px; border-radius:50%; background:rgba(255,255,255,0.2); cursor:pointer; transition:background 0.2s,transform 0.2s; border:none; padding:0; }
+  .cases-dot.active { background:var(--teal); transform:scale(1.3); }
+  .cases-arrows { display:flex; gap:0.75rem; }
+  .cases-arrow { width:44px; height:44px; border-radius:2px; border:0.5px solid rgba(255,255,255,0.15); background:transparent; color:rgba(255,255,255,0.6); cursor:pointer; display:flex; align-items:center; justify-content:center; transition:background 0.2s,color 0.2s,border-color 0.2s; }
+  .cases-arrow:hover { background:var(--teal); border-color:var(--teal); color:#fff; }
+  .cases-arrow:disabled { opacity:0.25; cursor:not-allowed; }
+  .cases-arrow svg { width:16px; height:16px; stroke:currentColor; fill:none; stroke-width:2; stroke-linecap:round; stroke-linejoin:round; }
+
+  #process { background:var(--warm); }
+  .process-steps { display:grid; grid-template-columns:repeat(4,1fr); gap:0; position:relative; }
+  .process-steps::before { content:''; position:absolute; top:2.2rem; left:12.5%; right:12.5%; height:1px; background:rgba(26,25,21,0.12); z-index:0; }
+  .process-step { padding:0 2rem; position:relative; z-index:1; }
+  .step-circle { width:44px; height:44px; border-radius:50%; background:var(--cream); border:1.5px solid rgba(26,25,21,0.15); display:flex; align-items:center; justify-content:center; font-family:var(--serif); font-size:1.1rem; font-weight:600; color:var(--teal); margin-bottom:1.5rem; }
+  .process-step.active .step-circle { background:var(--teal); border-color:var(--teal); color:#fff; }
+  .step-title { font-family:var(--serif); font-size:1.1rem; font-weight:400; color:var(--ink); margin-bottom:0.5rem; }
+  .step-desc { font-size:0.83rem; color:var(--muted); line-height:1.7; }
+
+  /* BOOKING */
+  #booking { background:var(--cream); }
+  .booking-inner { display:grid; grid-template-columns:1fr 1fr; gap:5rem; align-items:start; }
+  .booking-perks { margin-top:2.5rem; display:flex; flex-direction:column; gap:1.2rem; }
+  .perk { display:flex; align-items:flex-start; gap:1rem; }
+  .perk-dot { width:8px; height:8px; border-radius:50%; background:var(--teal); flex-shrink:0; margin-top:0.55rem; }
+  .perk-text { font-size:0.9rem; color:var(--muted); line-height:1.6; }
+  .perk-text strong { color:var(--ink); font-weight:500; }
+
+  /* Payment info box */
+  .booking-payment-info {
+    margin-top: 2rem;
+    background: var(--teal-lt);
+    border: 0.5px solid rgba(29,158,117,0.3);
+    border-radius: 2px;
+    padding: 1.2rem 1.5rem;
+    font-size: 0.85rem;
+    color: var(--teal-dk);
+    line-height: 1.7;
+  }
+  .booking-payment-info strong { display: block; margin-bottom: 0.3rem; font-size: 0.9rem; color: var(--ink); }
+
+  #contact { background:var(--ink); }
+  #contact .section-label { color:var(--teal); }
+  #contact .section-h2 { color:var(--cream); }
+  #contact .section-intro { color:rgba(255,255,255,0.45); }
+  .contact-inner { display:grid; grid-template-columns:1fr 1.4fr; gap:5rem; align-items:start; }
+  .contact-info { display:flex; flex-direction:column; gap:2rem; margin-top:0.5rem; }
+  .contact-item { display:flex; flex-direction:column; gap:0.3rem; }
+  .contact-item-label { font-size:0.7rem; letter-spacing:0.12em; text-transform:uppercase; color:rgba(255,255,255,0.3); }
+  .contact-item-val { font-family:var(--serif); font-size:1.1rem; font-weight:300; color:var(--cream); }
+  .contact-item-val a { color:var(--teal); text-decoration:none; }
+  .contact-item-val a:hover { text-decoration:underline; }
+  form { display:flex; flex-direction:column; gap:1.2rem; }
+  .form-row { display:grid; grid-template-columns:1fr 1fr; gap:1.2rem; }
+  label { font-size:0.75rem; letter-spacing:0.08em; text-transform:uppercase; color:rgba(255,255,255,0.4); display:block; margin-bottom:0.4rem; }
+  input,textarea,select { width:100%; background:rgba(255,255,255,0.05); border:0.5px solid rgba(255,255,255,0.12); border-radius:2px; padding:0.9rem 1rem; font-family:var(--sans); font-size:0.9rem; color:var(--cream); outline:none; transition:border-color 0.2s,background 0.2s; }
+  input:focus,textarea:focus,select:focus { border-color:var(--teal); background:rgba(29,158,117,0.05); }
+  input::placeholder,textarea::placeholder { color:rgba(255,255,255,0.2); }
+  textarea { resize:vertical; min-height:120px; }
+  select option { background:var(--ink); }
+  .form-note { font-size:0.78rem; color:rgba(255,255,255,0.25); line-height:1.6; }
+  .form-success { display:none; background:rgba(29,158,117,0.1); border:0.5px solid rgba(29,158,117,0.3); border-radius:2px; padding:1rem 1.25rem; font-size:0.9rem; color:var(--teal); }
+
+  footer { background:#111; padding:2.5rem 4rem; display:flex; align-items:center; justify-content:space-between; border-top:0.5px solid rgba(255,255,255,0.06); }
+  .footer-logo { font-family:var(--serif); font-size:1.1rem; font-weight:400; color:rgba(255,255,255,0.4); }
+  .footer-logo span { color:var(--teal); }
+  .footer-copy { font-size:0.78rem; color:rgba(255,255,255,0.2); }
+  .footer-links { display:flex; gap:2rem; }
+  .footer-links a { font-size:0.78rem; color:rgba(255,255,255,0.3); text-decoration:none; transition:color 0.2s; }
+  .footer-links a:hover { color:var(--teal); }
+
+  .fade-up { opacity:0; transform:translateY(24px); transition:opacity 0.6s ease,transform 0.6s ease; }
+  .fade-up.visible { opacity:1; transform:translateY(0); }
+  .fade-up.delay-1 { transition-delay:0.1s; }
+  .fade-up.delay-2 { transition-delay:0.2s; }
+  .fade-up.delay-3 { transition-delay:0.3s; }
+  .fade-up.delay-4 { transition-delay:0.4s; }
+
+  @media (max-width:900px) {
+    nav { padding:1rem 1.5rem; }
+    nav ul { display:none; }
+    #hero { grid-template-columns:1fr; }
+    .hero-left { padding:5rem 1.5rem 3rem; }
+    .hero-right { min-height:400px; padding:1.5rem; }
+    section { padding:4rem 1.5rem; }
+    .services-grid { grid-template-columns:1fr; }
+    .case-card { flex:0 0 100%; min-width:100%; }
+    .process-steps { grid-template-columns:1fr 1fr; gap:2.5rem; }
+    .process-steps::before { display:none; }
+    .booking-inner { grid-template-columns:1fr; gap:2.5rem; }
+    .contact-inner { grid-template-columns:1fr; gap:2.5rem; }
+    .form-row { grid-template-columns:1fr; }
+    footer { flex-direction:column; gap:1rem; text-align:center; padding:2rem 1.5rem; }
+    .footer-links { flex-wrap:wrap; justify-content:center; gap:1rem; }
+  }
+  @media (max-width:600px) {
+    .case-card { flex:0 0 100%; min-width:100%; }
+  }
+</style>
+</head>
+<body>
+
+<nav>
+  <a href="#" class="nav-logo">Bolig<span>Rådgiver</span></a>
+  <ul>
+    <li><a href="#services">Tjenester</a></li>
+    <li><a href="#cases">Eksempler</a></li>
+    <li><a href="#process">Prosess</a></li>
+    <li><a href="#booking">Book time</a></li>
+    <li><a href="#contact" class="nav-cta">Kontakt</a></li>
+  </ul>
+</nav>
+
+<!-- HERO -->
+<section id="hero">
+  <div class="hero-left">
+    <div class="hero-eyebrow fade-up">Eiendomsrådgivning · Oslo</div>
+    <h1 class="hero-h1 fade-up delay-1">Kjøp bolig med <em>gevinst</em>, ikke med tap.</h1>
+    <p class="hero-sub fade-up delay-2">Om du ser etter et investeringsobjekt eller en bolig du trives i. Fra objektsøk og prisanalyse til oppussingsplan og budrunde — jeg hjelper deg å ta de riktige beslutningene, slik at investeringen din gir avkastning.</p>
+    <div class="fade-up delay-3">
+      <a href="#booking" class="btn-primary">Book rådgivningstime</a>
+      <a href="#cases" class="btn-ghost">Se eksempler</a>
+    </div>
+  </div>
+  <div class="hero-right">
+    <div class="hero-pattern"></div>
+    <div class="hero-stat-grid fade-up delay-2">
+      <div class="hero-stat">
+        <div class="hero-stat-num">100%</div>
+        <div class="hero-stat-label">av mine kjøp/salg gir gevinst</div>
+      </div>
+      <div class="hero-stat">
+        <div class="hero-stat-num">430.000 nok</div>
+        <div class="hero-stat-label">snitt spart per kjøp etter rådgivning</div>
+      </div>
+      <div class="hero-stat">
+        <div class="hero-stat-num">Oslo</div>
+        <div class="hero-stat-label">primærmarked med lokal markedskunnskap</div>
+      </div>
+      <div class="hero-stat">
+        <div class="hero-stat-num">100%</div>
+        <div class="hero-stat-label">uavhengig — ingen provisjon fra megler</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- SERVICES -->
+<section id="services">
+  <div class="section-label fade-up">Tjenester</div>
+  <h2 class="section-h2 fade-up delay-1">Hva jeg <em>hjelper</em> deg med</h2>
+  <p class="section-intro fade-up delay-2">Enten du er førstegangskjøper eller vil prøve deg i investering — jeg tilpasser rådgivningen til dine mål.</p>
+  <div class="services-grid">
+    <div class="service-card fade-up delay-1">
+      <div class="service-num">01</div>
+      <div class="service-icon"><svg viewBox="0 0 24 24"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.35-4.35"/></svg></div>
+      <h3 class="service-title">Objektsøk & evaluering</h3>
+      <p class="service-desc">Jeg hjelper deg å finne riktig bolig i riktig område — og avdekker feil og muligheter før du byr. Vi vurderer beliggenhet, borettslag/sameie, utvikling i nabolaget og realistisk prisnivå.</p>
+    </div>
+    <div class="service-card fade-up delay-2">
+      <div class="service-num">02</div>
+      <div class="service-icon"><svg viewBox="0 0 24 24"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/><polyline points="10 9 9 9 8 9"/></svg></div>
+      <h3 class="service-title">Oppussingsplan & budsjett</h3>
+      <p class="service-desc">En realistisk plan for hva som bør gjøres, i hvilken rekkefølge, og hva det koster. Vi skiller mellom "must have" og "nice to have" — og setter av buffer for det uventede.</p>
+    </div>
+    <div class="service-card fade-up delay-3">
+      <div class="service-num">03</div>
+      <div class="service-icon"><svg viewBox="0 0 24 24"><line x1="12" y1="1" x2="12" y2="23"/><path d="M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"/></svg></div>
+      <h3 class="service-title">Full investeringsstrategi</h3>
+      <p class="service-desc">For deg som vil se helheten: finansiell plan, kjøpsstrategi, backup-scenarioer, forsikringsråd og exit-strategi. Vi gjennomgår alt fra egenkapital til hva som skjer hvis renten stiger.</p>
+    </div>
+  </div>
+</section>
+
+<!-- CASES CAROUSEL -->
+<section id="cases">
+  <div class="section-label fade-up">Eksempler</div>
+  <h2 class="section-h2 fade-up delay-1">Resultater fra <em>virkelige</em> kjøp</h2>
+  <p class="section-intro fade-up delay-2">Alle tall er reelle — navn er anonymisert av hensyn til klientene.</p>
+  <div class="cases-carousel-wrap fade-up delay-2">
+    <div class="cases-track-outer">
+      <div class="cases-track" id="casesTrack">
+        <div class="case-card">
+          <span class="case-tag">Sentrum</span>
+          <h3 class="case-title">2-roms leilighet, 19 kvm</h3>
+          <p class="case-desc">Kjøpt i juli 2024 i et stille marked. Et objekt med kosmetisk behov. Vi la en strategi for å utnytte kvadratmeterne og styling for et koselig hjem.</p>
+          <div class="case-numbers">
+            <div><div class="case-num-label">Kjøpspris</div><div class="case-num-val">2.570.000</div></div>
+            <div><div class="case-num-label">Oppussingskost</div><div class="case-num-val">150.000</div></div>
+            <div><div class="case-num-label">Salgspris</div><div class="case-num-val">3.280.000</div></div>
+            <div><div class="case-num-label">Egne timer brukt</div><div class="case-num-val">50</div></div>
+          </div>
+        </div>
+        <div class="case-card">
+          <span class="case-tag">Hellerud</span>
+          <h3 class="case-title">3-roms med oppussingsbehov</h3>
+          <p class="case-desc">Investor ønsket flipp-prosjekt. Vi foreslo endring i planløsning og gjort om til 4-roms. Det ble et rekordsalg i området. Prosjektet er gjennomført i 2024.</p>
+          <div class="case-numbers">
+            <div><div class="case-num-label">Kjøpspris</div><div class="case-num-val">3.780.000</div></div>
+            <div><div class="case-num-label">Oppussingskost</div><div class="case-num-val">465.000</div></div>
+            <div><div class="case-num-label">Salgspris</div><div class="case-num-val">5.050.000</div></div>
+            <div><div class="case-num-label">Tidshorisont</div><div class="case-num-val">4 mnd</div></div>
+          </div>
+        </div>
+        <div class="case-card">
+          <span class="case-tag">Haugerud</span>
+          <h3 class="case-title">80 kvm — bodde der og pusset opp underveis</h3>
+          <p class="case-desc">Vi valgte et objekt med potensial i et etablert borettslag og lagde en strategi for gradvis oppussing. Vi solgte med gevinst selv om markedet var stille. Solgt høsten 2023.</p>
+          <div class="case-numbers">
+            <div><div class="case-num-label">Kjøpspris</div><div class="case-num-val">3.900.000</div></div>
+            <div><div class="case-num-label">Oppussingskost</div><div class="case-num-val">250.000</div></div>
+            <div><div class="case-num-label">Salgspris</div><div class="case-num-val">4.675.000</div></div>
+            <div><div class="case-num-label">Tidshorisont</div><div class="case-num-val">1,5 år</div></div>
+          </div>
+        </div>
+        <div class="case-card">
+          <span class="case-tag">Høybråten</span>
+          <h3 class="case-title">En flipp uten oppussing</h3>
+          <p class="case-desc">Borettslag skulle bytte ut rør og pusse opp bad i hele bygningen. Kjøpte leiligheten til en god pris, ventet 2 måneder og installerte fine bademøbler og badekar. Gjort i 2022.</p>
+          <div class="case-numbers">
+            <div><div class="case-num-label">Kjøpspris</div><div class="case-num-val">3.000.000</div></div>
+            <div><div class="case-num-label">Oppussingskost</div><div class="case-num-val">25.000</div></div>
+            <div><div class="case-num-label">Salgspris</div><div class="case-num-val">3.500.000</div></div>
+            <div><div class="case-num-label">Tidshorisont</div><div class="case-num-val">3,5 mnd</div></div>
+          </div>
+        </div>
+        <div class="case-card">
+          <span class="case-tag">Frogner</span>
+          <h3 class="case-title">Klassisk leilighet på 140 kvm</h3>
+          <p class="case-desc">To klienter har samarbeidet om total renovering. Vi valgte eksklusive fliser, bademøbler, parkett og kjøkken, og fulgte opp håndverkerne. Leiligheten ble til en perle.</p>
+          <div class="case-numbers">
+            <div><div class="case-num-label">Kjøpspris</div><div class="case-num-val">12.300.000</div></div>
+            <div><div class="case-num-label">Oppussingskost</div><div class="case-num-val">2.300.000</div></div>
+            <div><div class="case-num-label">Salgspris</div><div class="case-num-val">Følges opp</div></div>
+            <div><div class="case-num-label">Tidshorisont</div><div class="case-num-val">7 mnd</div></div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="cases-controls">
+      <div class="cases-dots" id="casesDots"></div>
+      <div class="cases-arrows">
+        <button class="cases-arrow" id="casesPrev" aria-label="Forrige"><svg viewBox="0 0 24 24"><polyline points="15 18 9 12 15 6"/></svg></button>
+        <button class="cases-arrow" id="casesNext" aria-label="Neste"><svg viewBox="0 0 24 24"><polyline points="9 18 15 12 9 6"/></svg></button>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- PROCESS -->
+<section id="process">
+  <div class="section-label fade-up">Prosess</div>
+  <h2 class="section-h2 fade-up delay-1">Slik jobber <em>vi</em> sammen</h2>
+  <p class="section-intro fade-up delay-2">Fire steg fra første samtale til ferdig bolig.</p>
+  <div class="process-steps" style="margin-top:3.5rem;">
+    <div class="process-step fade-up delay-1">
+      <div class="step-circle active">1</div>
+      <h3 class="step-title">Rådgivningstime</h3>
+      <p class="step-desc">45 minutter der vi kartlegger dine mål, budsjett og muligheter. Du får konkrete svar og en klar retning.</p>
+    </div>
+    <div class="process-step fade-up delay-2">
+      <div class="step-circle">2</div>
+      <h3 class="step-title">Strategi & plan</h3>
+      <p class="step-desc">Vi legger en finansiell plan med backup-scenarioer og definerer hva vi ser etter i markedet.</p>
+    </div>
+    <div class="process-step fade-up delay-3">
+      <div class="step-circle">3</div>
+      <h3 class="step-title">Søk & analyse</h3>
+      <p class="step-desc">Jeg evaluerer objekter, gjennomgår dokumentasjon og gir deg konkret go/no-go med begrunnelse.</p>
+    </div>
+    <div class="process-step fade-up delay-4">
+      <div class="step-circle">4</div>
+      <h3 class="step-title">Kjøp & oppfølging</h3>
+      <p class="step-desc">Budstrategi, forsikringsråd og oppussingsplan, kontrahering av håndverker og oppfølging. Forberedelse til salg med styling.</p>
+    </div>
+  </div>
+</section>
+
+<!-- BOOKING — updated for paid session -->
+<section id="booking">
+  <div class="booking-inner">
+    <div class="booking-left">
+      <div class="section-label fade-up">Book time</div>
+      <h2 class="section-h2 fade-up delay-1">Din første <em>rådgivningstime</em></h2>
+      <p class="section-intro fade-up delay-2" style="margin-bottom:0;">45 minutter med konkret, personlig rådgivning tilpasset din situasjon — enten du er førstegangskjøper eller erfaren investor.</p>
+      <div class="booking-perks fade-up delay-3">
+        <div class="perk"><div class="perk-dot"></div><p class="perk-text"><strong>Pris: kr 750,-</strong> Faktura sendes til din e-post innen 24 timer etter booking. Møtet bekreftes når betaling er registrert.</p></div>
+        <div class="perk"><div class="perk-dot"></div><p class="perk-text"><strong>Videosamtale via Google Meet.</strong> Du får en lenke på e-post automatisk etter booking.</p></div>
+        <div class="perk"><div class="perk-dot"></div><p class="perk-text"><strong>Forbered gjerne spørsmål.</strong> Jo mer du forteller om situasjonen din på forhånd, desto mer får du ut av timen.</p></div>
+        <div class="perk"><div class="perk-dot"></div><p class="perk-text"><strong>Avbestilling.</strong> Gratis avbestilling frem til 24 timer før møtet.</p></div>
+      </div>
+      <div class="booking-payment-info fade-up delay-4">
+        <strong>Slik fungerer betaling:</strong>
+        1. Book en tid i kalenderen →<br>
+        2. Du mottar faktura på kr 750,- innen 24 timer →<br>
+        3. Betal fakturaen → møtet bekreftes automatisk.<br><br>
+        Spørsmål? Send meg en DM på Instagram eller e-post.
+      </div>
+    </div>
+    <div class="fade-up delay-2">
+      <!-- Calendly inline widget begin -->
+      <div class="calendly-inline-widget" data-url="https://calendly.com/maya-kobchenko?hide_gdpr_banner=1&background_color=f7f5f0&text_color=1a1915&primary_color=1d9e75" style="min-width:320px;height:700px;"></div>
+      <script type="text/javascript" src="https://assets.calendly.com/assets/external/widget.js" async></script>
+      <!-- Calendly inline widget end -->
+    </div>
+  </div>
+</section>
+
+<!-- CONTACT -->
+<section id="contact">
+  <div class="section-label fade-up">Kontakt</div>
+  <h2 class="section-h2 fade-up delay-1">Ta <em>kontakt</em> direkte</h2>
+  <p class="section-intro fade-up delay-2">Foretrekker du å skrive? Fyll ut skjemaet så svarer jeg innen 24 timer.</p>
+  <div class="contact-inner" style="margin-top:3rem;">
+    <div class="contact-info fade-up delay-1">
+      <div class="contact-item"><div class="contact-item-label">E-post</div><div class="contact-item-val"><a href="mailto:kobchenko.maya@gmail.com">kobchenko.maya@gmail.com</a></div></div>
+      <div class="contact-item"><div class="contact-item-label">Telefon</div><div class="contact-item-val">+47 413 98 183</div></div>
+      <div class="contact-item"><div class="contact-item-label">Instagram</div><div class="contact-item-val"><a href="https://instagram.com/mayakobchenko_byggservice" target="_blank">@mayakobchenko_byggservice</a></div></div>
+      <div class="contact-item"><div class="contact-item-label">Område</div><div class="contact-item-val">Oslo & omegn</div></div>
+      <div class="contact-item"><div class="contact-item-label">Responstid</div><div class="contact-item-val">Innen 24 timer på hverdager</div></div>
+    </div>
+    <div class="fade-up delay-2">
+      <form action="https://formspree.io/f/xwvzrvkq" method="POST">
+        <div class="form-row">
+          <div><label for="name">Navn</label><input type="text" id="name" name="name" placeholder="Ditt fulle navn" required></div>
+          <div><label for="email">E-post</label><input type="email" id="email" name="email" placeholder="din@epost.no" required></div>
+        </div>
+        <div>
+          <label for="service">Hva trenger du hjelp med?</label>
+          <select id="service" name="service">
+            <option value="">Velg tjeneste...</option>
+            <option>Objektsøk & evaluering</option>
+            <option>Oppussingsplan & budsjett</option>
+            <option>Full investeringsstrategi</option>
+            <option>Annet / usikker</option>
+          </select>
+        </div>
+        <div><label for="message">Melding</label><textarea id="message" name="message" placeholder="Fortell litt om situasjonen din — budsjett, tidshorisont, hva du ser etter..."></textarea></div>
+        <button type="submit" class="btn-primary" style="width:100%;justify-content:center;">Send melding →</button>
+        <p class="form-note">Informasjonen du oppgir brukes kun til å besvare henvendelsen din. Ingen spam, ingen videresalg.</p>
+        <div class="form-success" id="form-success">Takk! Jeg svarer deg innen 24 timer.</div>
+      </form>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="footer-logo">Bolig<span>Rådgiver</span></div>
+  <div class="footer-copy">© 2025 · Eiendomsrådgivning Oslo</div>
+  <div class="footer-links">
+    <a href="#services">Tjenester</a>
+    <a href="#cases">Eksempler</a>
+    <a href="#booking">Book time</a>
+    <a href="#contact">Kontakt</a>
+  </div>
+</footer>
+
+<script>
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(e => { if (e.isIntersecting) e.target.classList.add('visible'); });
+  }, { threshold: 0.12 });
+  document.querySelectorAll('.fade-up').forEach(el => observer.observe(el));
+
+  document.querySelector('form').addEventListener('submit', async function(e) {
+    e.preventDefault();
+    const btn = this.querySelector('button[type=submit]');
+    btn.textContent = 'Sender...'; btn.disabled = true;
+    try {
+      const res = await fetch(this.action, { method: 'POST', body: new FormData(this), headers: { 'Accept': 'application/json' } });
+      if (res.ok) { this.reset(); document.getElementById('form-success').style.display = 'block'; btn.textContent = 'Sendt ✓'; }
+      else { btn.textContent = 'Prøv igjen'; btn.disabled = false; }
+    } catch { btn.textContent = 'Prøv igjen'; btn.disabled = false; }
+  });
+
+  (function() {
+    const outer = document.querySelector('.cases-track-outer');
+    const track = document.getElementById('casesTrack');
+    const dotsContainer = document.getElementById('casesDots');
+    const prevBtn = document.getElementById('casesPrev');
+    const nextBtn = document.getElementById('casesNext');
+    const cards = Array.from(track.querySelectorAll('.case-card'));
+    const total = cards.length;
+    let current = 0;
+    let visibleCount = 3;
+
+    outer.style.overflowX = 'hidden';
+    outer.style.scrollBehavior = 'smooth';
+    track.style.transform = 'none';
+    track.style.transition = 'none';
+    track.style.display = 'flex';
+
+    function getVisible() { return window.innerWidth <= 900 ? 1 : 3; }
+    function getPages() { return Math.ceil(total / visibleCount); }
+
+    function setWidths() {
+      visibleCount = getVisible();
+      const w = outer.clientWidth / visibleCount;
+      cards.forEach(c => { c.style.flex = `0 0 ${w}px`; c.style.minWidth = `${w}px`; c.style.maxWidth = `${w}px`; });
+    }
+
+    function buildDots() {
+      dotsContainer.innerHTML = '';
+      const pages = getPages();
+      for (let i = 0; i < pages; i++) {
+        const d = document.createElement('button');
+        d.className = 'cases-dot' + (i === current ? ' active' : '');
+        d.setAttribute('aria-label', `Side ${i + 1}`);
+        d.addEventListener('click', () => goTo(i));
+        dotsContainer.appendChild(d);
+      }
+    }
+
+    function updateDots() {
+      dotsContainer.querySelectorAll('.cases-dot').forEach((d, i) => { d.classList.toggle('active', i === current); });
+    }
+
+    function goTo(page) {
+      const pages = getPages();
+      current = Math.max(0, Math.min(page, pages - 1));
+      const cardW = outer.clientWidth / visibleCount;
+      outer.scrollLeft = current * visibleCount * cardW;
+      updateDots();
+      prevBtn.disabled = current === 0;
+      nextBtn.disabled = current >= pages - 1;
+    }
+
+    prevBtn.addEventListener('click', () => goTo(current - 1));
+    nextBtn.addEventListener('click', () => goTo(current + 1));
+
+    let startX = 0;
+    outer.addEventListener('touchstart', e => { startX = e.touches[0].clientX; }, { passive: true });
+    outer.addEventListener('touchend', e => {
+      const diff = startX - e.changedTouches[0].clientX;
+      if (Math.abs(diff) > 50) goTo(diff > 0 ? current + 1 : current - 1);
+    });
+
+    function init() { setWidths(); buildDots(); goTo(0); }
+    init();
+    window.addEventListener('resize', init);
+  })();
+</script>
+</body>
+</html>
