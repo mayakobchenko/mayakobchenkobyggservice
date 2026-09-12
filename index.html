@@ -80,32 +80,49 @@
   .om-text p strong { color: var(--ink); font-weight: 500; }
   .om-text h3 { font-family: var(--serif); font-size: 1.3rem; font-weight: 400; color: var(--ink); margin: 2rem 0 0.6rem; }
   .om-text h3:first-of-type { margin-top: 0; }
-  .om-highlights { display: flex; flex-direction: column; gap: 1.5px; background: rgba(26,25,21,0.08); }
+
+  /* Maya photo */
+  .om-photo-maya {
+    width: 100%;
+    display: block;
+    border-radius: 2px;
+    object-fit: cover;
+    aspect-ratio: 4/5;
+    margin-bottom: 1.5px;
+  }
+  .om-photo-caption {
+    font-size: 0.78rem;
+    color: var(--muted);
+    font-style: italic;
+    text-align: center;
+    padding: 0.75rem 1rem;
+    background: rgba(26,25,21,0.04);
+  }
+
+  .om-highlights { display: flex; flex-direction: column; gap: 1.5px; background: rgba(26,25,21,0.08); margin-top: 1.5px; }
   .om-highlight { background: var(--warm); padding: 1.5rem 2rem; display: flex; flex-direction: column; gap: 0.3rem; }
   .om-highlight-num { font-family: var(--serif); font-size: 2rem; font-weight: 300; color: var(--teal); line-height: 1; }
   .om-highlight-label { font-size: 0.82rem; color: var(--muted); line-height: 1.5; }
 
-  /* PHOTO GALLERY */
+  /* PHOTO GALLERY — natural proportions, masonry-style */
   .om-gallery { margin-top: 0; }
-  .om-gallery-label { font-size: 0.78rem; font-weight: 500; letter-spacing: 0.1em; text-transform: uppercase; color: var(--muted); margin-bottom: 1.5rem; }
-  .om-gallery-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 1.5px; background: rgba(26,25,21,0.08); }
-  .om-photo-slot {
-    aspect-ratio: 3/4;
-    background: rgba(26,25,21,0.04);
-    border: 1.5px dashed rgba(26,25,21,0.15);
-    display: flex; flex-direction: column; align-items: center; justify-content: center;
-    gap: 0.5rem; cursor: pointer; transition: background 0.2s;
-    position: relative; overflow: hidden;
+  .om-gallery-label {
+    font-size: 0.78rem; font-weight: 500; letter-spacing: 0.1em;
+    text-transform: uppercase; color: var(--muted); margin-bottom: 1.25rem;
   }
-  .om-photo-slot img {
-    position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover;
-    display: none;
+  .om-gallery-grid {
+    columns: 3;
+    column-gap: 8px;
   }
-  .om-photo-slot img.loaded { display: block; }
-  .om-photo-slot-icon { font-size: 1.5rem; color: rgba(26,25,21,0.2); }
-  .om-photo-slot-text { font-size: 0.72rem; color: rgba(26,25,21,0.3); text-align: center; line-height: 1.4; padding: 0 1rem; }
-  .om-photo-slot input[type=file] { position: absolute; inset: 0; opacity: 0; cursor: pointer; }
-  .om-photo-slot:hover { background: rgba(26,25,21,0.06); }
+  .om-gallery-grid img {
+    width: 100%;
+    display: block;
+    margin-bottom: 8px;
+    border-radius: 2px;
+    break-inside: avoid;
+    transition: opacity 0.2s;
+  }
+  .om-gallery-grid img:hover { opacity: 0.9; }
 
   /* CASES */
   #cases { background:var(--ink); color:var(--cream); }
@@ -200,7 +217,7 @@
     section { padding:4rem 1.5rem; }
     .services-grid { grid-template-columns:1fr; }
     .om-inner { grid-template-columns:1fr; gap:2.5rem; }
-    .om-gallery-grid { grid-template-columns:repeat(2,1fr); }
+    .om-gallery-grid { columns: 2; }
     .case-card { flex:0 0 100%; min-width:100%; }
     .process-steps { grid-template-columns:1fr 1fr; gap:2.5rem; }
     .process-steps::before { display:none; }
@@ -212,7 +229,7 @@
   }
   @media (max-width:600px) {
     .case-card { flex:0 0 100%; min-width:100%; }
-    .om-gallery-grid { grid-template-columns:repeat(2,1fr); }
+    .om-gallery-grid { columns: 1; }
   }
 </style>
 </head>
@@ -244,22 +261,10 @@
   <div class="hero-right">
     <div class="hero-pattern"></div>
     <div class="hero-stat-grid fade-up delay-2">
-      <div class="hero-stat">
-        <div class="hero-stat-num">100%</div>
-        <div class="hero-stat-label">av mine kjøp/salg gir gevinst</div>
-      </div>
-      <div class="hero-stat">
-        <div class="hero-stat-num">430.000 nok</div>
-        <div class="hero-stat-label">snitt spart per kjøp etter rådgivning</div>
-      </div>
-      <div class="hero-stat">
-        <div class="hero-stat-num">Oslo</div>
-        <div class="hero-stat-label">primærmarked med lokal markedskunnskap</div>
-      </div>
-      <div class="hero-stat">
-        <div class="hero-stat-num">100%</div>
-        <div class="hero-stat-label">uavhengig — ingen provisjon fra megler</div>
-      </div>
+      <div class="hero-stat"><div class="hero-stat-num">100%</div><div class="hero-stat-label">av mine kjøp/salg gir gevinst</div></div>
+      <div class="hero-stat"><div class="hero-stat-num">430.000 nok</div><div class="hero-stat-label">snitt spart per kjøp etter rådgivning</div></div>
+      <div class="hero-stat"><div class="hero-stat-num">Oslo</div><div class="hero-stat-label">primærmarked med lokal markedskunnskap</div></div>
+      <div class="hero-stat"><div class="hero-stat-num">100%</div><div class="hero-stat-label">uavhengig — ingen provisjon fra megler</div></div>
     </div>
   </div>
 </section>
@@ -299,68 +304,54 @@
   <div class="om-inner fade-up delay-2">
     <div class="om-text">
       <p>Leter du etter hjelp til å kjøpe bolig i Oslo? Eller ønsker du å investere i eiendom med gevinst? Jeg er Maya Kobchenko — uavhengig boligrådgiver og byggerådgiver i Oslo, Drammen og omegn. Jeg hjelper deg fra første visning til nøklene er i hånden.</p>
-
       <h3>Hva jeg hjelper deg med</h3>
       <p>Jeg hjelper deg å finne riktig bolig eller investeringsobjekt basert på dine behov, budsjett og mål. Jeg vurderer beliggenhet, nabolagets utvikling, borettslagets og sameiers økonomi og historikk, samt realistisk prisnivå — slik at du byr med trygghet og ikke betaler for mye.</p>
       <p>Før du legger inn bud gjennomfører jeg en teknisk vurdering av boligen. Jeg avdekker skjulte feil, kostnader du bør planlegge for, og vurderer hva som faktisk er verdt å utbedre. Dette gir deg et klart bilde av hva kjøpet egentlig koster og hvilken margin du har.</p>
-
       <h3>Individuell budsjettplan og finansiell strategi</h3>
       <p>Et smart boligkjøp starter med en realistisk finansiell plan. Jeg setter opp et individuelt budsjett for kjøp og oppussing, og lager alternative scenarioer — hva skjer hvis renten stiger, hvis du mister jobben, eller hvis boligmarkedet er stille når du ønsker å selge? Du skal aldri bli tatt på sengen av uforutsette hendelser.</p>
       <p>For deg som vurderer boliginvestering eller flipp — kjøp og salg med gevinst — legger jeg en komplett strategi fra dag én: riktig kjøpspris, oppussingsplan, exit-strategi og timing for salg.</p>
-
       <h3>Detaljert oppussingsplan og byggerådgivning</h3>
       <p>Jeg utarbeider en detaljert oppussingsplan tilpasset ditt budsjett og dine mål. Jeg skiller mellom hva som må gjøres, hva som lønner seg å gjøre, og hva som er unødvendig. Du får en klar prioritert rekkefølge, realistiske kostnadsestimater og en buffer for det uventede.</p>
       <p>Trenger du råd om materialvalg, planløsning, bad, kjøkken eller parkett? Jeg har bred erfaring med oppussing i Oslo-markedet og vet hva som faktisk øker verdien på boligen — og hva som er bortkastede penger.</p>
-
       <h3>Oppfølging og kontroll av håndverkere</h3>
       <p>Jeg kan følge opp hele oppussningsprosessen på dine vegne — fra innhenting av tilbud og kontrahering av håndverkere til kontroll av arbeid underveis og ved overtakelse. Du slipper å stå alene overfor håndverkere, og jeg sørger for at arbeidet holder den kvaliteten du har betalt for.</p>
-
       <h3>Strategi for salg — timing, styling og hva du bør renovere</h3>
       <p>Skal du selge boligen din? Jeg hjelper deg å bestemme riktig tidspunkt for salg, planlegge hvilke oppgraderinger som faktisk lønner seg før salg, og legge en stylingsstrategi som maksimerer salgsprisen. Ikke alle oppussingsprosjekter gir avkastning — jeg hjelper deg å investere pengene der det virkelig teller.</p>
-
       <h3>Serviceområde</h3>
       <p>Jeg betjener primært Oslo — inkludert Frogner, Grünerløkka, Sagene, Sentrum, Hellerud, Haugerud, Høybråten, Bøler og Østensjø — samt Drammen og omegn.</p>
     </div>
 
     <div>
-      <div class="om-highlights">
-        <div class="om-highlight">
-          <div class="om-highlight-num">100%</div>
-          <div class="om-highlight-label">av alle prosjekter gjennomført med gevinst</div>
-        </div>
-        <div class="om-highlight">
-          <div class="om-highlight-num">430.000 kr</div>
-          <div class="om-highlight-label">snitt spart per kjøp etter rådgivning</div>
-        </div>
-        <div class="om-highlight">
-          <div class="om-highlight-num">6+</div>
-          <div class="om-highlight-label">vellykkede boligprosjekter i Oslo-markedet</div>
-        </div>
-        <div class="om-highlight">
-          <div class="om-highlight-num">100%</div>
-          <div class="om-highlight-label">uavhengig — ingen provisjon fra megler eller håndverker</div>
-        </div>
-      </div>
+      <!-- Maya photo -->
+      <img src="bilder/maya.jpg" alt="Maya Kobchenko — boligrådgiver Oslo" class="om-photo-maya">
+      <div class="om-photo-caption">Maya Kobchenko — boligrådgiver & byggerådgiver i Oslo</div>
 
-      <div style="margin-top: 1.5px; background: rgba(26,25,21,0.08); padding: 1.5rem 2rem;">
-        <p style="font-size:0.85rem; color:var(--muted); line-height:1.7;">
-          <strong style="color:var(--ink); display:block; margin-bottom:0.4rem;">Hvorfor velge meg?</strong>
+      <!-- Stats -->
+      <div class="om-highlights">
+        <div class="om-highlight"><div class="om-highlight-num">100%</div><div class="om-highlight-label">av alle prosjekter gjennomført med gevinst</div></div>
+        <div class="om-highlight"><div class="om-highlight-num">430.000 kr</div><div class="om-highlight-label">snitt spart per kjøp etter rådgivning</div></div>
+        <div class="om-highlight"><div class="om-highlight-num">6+</div><div class="om-highlight-label">vellykkede boligprosjekter i Oslo-markedet</div></div>
+        <div class="om-highlight"><div class="om-highlight-num">100%</div><div class="om-highlight-label">uavhengig — ingen provisjon fra megler eller håndverker</div></div>
+      </div>
+      <div style="margin-top:1.5px;background:rgba(26,25,21,0.08);padding:1.5rem 2rem;">
+        <p style="font-size:0.85rem;color:var(--muted);line-height:1.7;">
+          <strong style="color:var(--ink);display:block;margin-bottom:0.4rem;">Hvorfor velge meg?</strong>
           Jeg er 100 % uavhengig rådgiver uten provisjon fra meglere, håndverkere eller leverandører. Rådet du får er alltid i din interesse. Jeg har gjennomført vellykkede boligprosjekter i Sentrum, Frogner, Grünerløkka, Hellerud, Haugerud, Høybråten og Bøler — med dokumenterte resultater. Alle mine kjøp og salg har gitt gevinst.
         </p>
       </div>
     </div>
   </div>
 
-  <!-- PHOTO GALLERY -->
+  <!-- PHOTO GALLERY — natural proportions via CSS columns (masonry) -->
   <div class="om-gallery fade-up delay-3">
-    <div class="om-gallery-label">Bilder fra prosjektene</div>
-    <div class="om-gallery-grid" id="photoGrid">
-      <img src="bilder/Interior1_elisen.jpg" alt="Frogner Elisenbergveien" style="width:100%;aspect-ratio:3/4;object-fit:cover;">
-      <img src="bilder/bad_elisen.jpg" alt="Frogner Elisenbergveien" style="width:100%;aspect-ratio:3/4;object-fit:cover;">
-      <img src="bilder/soverom_elisen.jpg" alt="Frogner Elisenbergveien" style="width:100%;aspect-ratio:3/4;object-fit:cover;">
-      <img src="bilder/Kjokken_elisen.jpg" alt="Frogner Elisenbergveien" style="width:100%;aspect-ratio:3/4;object-fit:cover;">
-      <img src="bilder/spisestua_elisen.jpg" alt="Frogner Elisenbergveien" style="width:100%;aspect-ratio:3/4;object-fit:cover;">
-      <img src="bilder/lampe_elisen.jpg" alt="Frogner Elisenbergveien" style="width:100%;aspect-ratio:3/4;object-fit:cover;">
+    <div class="om-gallery-label">Bilder fra prosjektene — Frogner, Elisenbergveien</div>
+    <div class="om-gallery-grid">
+      <img src="bilder/Interior1_elisen.jpg" alt="Stue — Frogner Elisenbergveien">
+      <img src="bilder/bad_elisen.jpg" alt="Baderom — Frogner Elisenbergveien">
+      <img src="bilder/soverom_elisen.jpg" alt="Soverom — Frogner Elisenbergveien">
+      <img src="bilder/Kjokken_elisen.jpg" alt="Kjøkken — Frogner Elisenbergveien">
+      <img src="bilder/spisestua_elisen.jpg" alt="Spisestue — Frogner Elisenbergveien">
+      <img src="bilder/lampe_elisen.jpg" alt="Detalj — Frogner Elisenbergveien">
     </div>
   </div>
 </section>
@@ -446,26 +437,10 @@
   <h2 class="section-h2 fade-up delay-1">Slik jobber <em>vi</em> sammen</h2>
   <p class="section-intro fade-up delay-2">Fire steg fra første samtale til ferdig bolig.</p>
   <div class="process-steps" style="margin-top:3.5rem;">
-    <div class="process-step fade-up delay-1">
-      <div class="step-circle active">1</div>
-      <h3 class="step-title">Rådgivningstime</h3>
-      <p class="step-desc">45 minutter der vi kartlegger dine mål, budsjett og muligheter. Du får konkrete svar og en klar retning.</p>
-    </div>
-    <div class="process-step fade-up delay-2">
-      <div class="step-circle">2</div>
-      <h3 class="step-title">Strategi & plan</h3>
-      <p class="step-desc">Vi legger en finansiell plan med backup-scenarioer og definerer hva vi ser etter i markedet.</p>
-    </div>
-    <div class="process-step fade-up delay-3">
-      <div class="step-circle">3</div>
-      <h3 class="step-title">Søk & analyse</h3>
-      <p class="step-desc">Jeg evaluerer objekter, gjennomgår dokumentasjon og gir deg konkret go/no-go med begrunnelse.</p>
-    </div>
-    <div class="process-step fade-up delay-4">
-      <div class="step-circle">4</div>
-      <h3 class="step-title">Kjøp & oppfølging</h3>
-      <p class="step-desc">Budstrategi, forsikringsråd og oppussingsplan, kontrahering av håndverker og oppfølging. Forberedelse til salg med styling.</p>
-    </div>
+    <div class="process-step fade-up delay-1"><div class="step-circle active">1</div><h3 class="step-title">Rådgivningstime</h3><p class="step-desc">45 minutter der vi kartlegger dine mål, budsjett og muligheter. Du får konkrete svar og en klar retning.</p></div>
+    <div class="process-step fade-up delay-2"><div class="step-circle">2</div><h3 class="step-title">Strategi & plan</h3><p class="step-desc">Vi legger en finansiell plan med backup-scenarioer og definerer hva vi ser etter i markedet.</p></div>
+    <div class="process-step fade-up delay-3"><div class="step-circle">3</div><h3 class="step-title">Søk & analyse</h3><p class="step-desc">Jeg evaluerer objekter, gjennomgår dokumentasjon og gir deg konkret go/no-go med begrunnelse.</p></div>
+    <div class="process-step fade-up delay-4"><div class="step-circle">4</div><h3 class="step-title">Kjøp & oppfølging</h3><p class="step-desc">Budstrategi, forsikringsråd og oppussingsplan, kontrahering av håndverker og oppfølging. Forberedelse til salg med styling.</p></div>
   </div>
 </section>
 
@@ -491,10 +466,8 @@
       </div>
     </div>
     <div class="fade-up delay-2">
-      <!-- Calendly inline widget begin -->
       <div class="calendly-inline-widget" data-url="https://calendly.com/maya-kobchenko?hide_gdpr_banner=1&background_color=f7f5f0&text_color=1a1915&primary_color=1d9e75" style="min-width:320px;height:700px;"></div>
       <script type="text/javascript" src="https://assets.calendly.com/assets/external/widget.js" async></script>
-      <!-- Calendly inline widget end -->
     </div>
   </div>
 </section>
@@ -566,25 +539,6 @@
     } catch { btn.textContent = 'Prøv igjen'; btn.disabled = false; }
   });
 
-  // Photo upload preview
-  function loadPhoto(input) {
-    const slot = input.closest('.om-photo-slot');
-    const img = slot.querySelector('img');
-    const icon = slot.querySelector('.om-photo-slot-icon');
-    const text = slot.querySelector('.om-photo-slot-text');
-    if (input.files && input.files[0]) {
-      const reader = new FileReader();
-      reader.onload = e => {
-        img.src = e.target.result;
-        img.classList.add('loaded');
-        icon.style.display = 'none';
-        text.style.display = 'none';
-      };
-      reader.readAsDataURL(input.files[0]);
-    }
-  }
-
-  // Cases carousel
   (function() {
     const outer = document.querySelector('.cases-track-outer');
     const track = document.getElementById('casesTrack');
