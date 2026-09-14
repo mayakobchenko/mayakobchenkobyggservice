@@ -89,48 +89,16 @@
   .om-text p strong { color: var(--ink); font-weight: 500; }
   .om-text h3 { font-family: var(--serif); font-size: 1.3rem; font-weight: 400; color: var(--ink); margin: 2rem 0 0.6rem; }
   .om-text h3:first-of-type { margin-top: 0; }
-
-  /* Maya photo */
-  .om-photo-maya {
-    width: 60%;
-    display: block;
-    border-radius: 2px;
-    object-fit: cover;
-    aspect-ratio: 1/1;
-    margin: 0 auto 1.5px;
-  }
-  .om-photo-caption {
-    font-size: 0.78rem;
-    color: var(--muted);
-    font-style: italic;
-    text-align: center;
-    padding: 0.75rem 1rem;
-    background: rgba(26,25,21,0.04);
-  }
-
+  .om-photo-maya { width: 60%; display: block; border-radius: 2px; object-fit: cover; aspect-ratio: 1/1; margin: 0 auto 1.5px; }
+  .om-photo-caption { font-size: 0.78rem; color: var(--muted); font-style: italic; text-align: center; padding: 0.75rem 1rem; background: rgba(26,25,21,0.04); }
   .om-highlights { display: flex; flex-direction: column; gap: 1.5px; background: rgba(26,25,21,0.08); margin-top: 1.5px; }
   .om-highlight { background: var(--warm); padding: 1.5rem 2rem; display: flex; flex-direction: column; gap: 0.3rem; }
   .om-highlight-num { font-family: var(--serif); font-size: 2rem; font-weight: 300; color: var(--teal); line-height: 1; }
   .om-highlight-label { font-size: 0.82rem; color: var(--muted); line-height: 1.5; }
-
-  /* PHOTO GALLERY — natural proportions, masonry-style */
   .om-gallery { margin-top: 0; }
-  .om-gallery-label {
-    font-size: 0.78rem; font-weight: 500; letter-spacing: 0.1em;
-    text-transform: uppercase; color: var(--muted); margin-bottom: 1.25rem;
-  }
-  .om-gallery-grid {
-    columns: 3;
-    column-gap: 8px;
-  }
-  .om-gallery-grid img {
-    width: 100%;
-    display: block;
-    margin-bottom: 8px;
-    border-radius: 2px;
-    break-inside: avoid;
-    transition: opacity 0.2s;
-  }
+  .om-gallery-label { font-size: 0.78rem; font-weight: 500; letter-spacing: 0.1em; text-transform: uppercase; color: var(--muted); margin-bottom: 1.25rem; }
+  .om-gallery-grid { columns: 3; column-gap: 8px; }
+  .om-gallery-grid img { width: 100%; display: block; margin-bottom: 8px; border-radius: 2px; break-inside: avoid; transition: opacity 0.2s; }
   .om-gallery-grid img:hover { opacity: 0.9; }
 
   /* CASES */
@@ -230,7 +198,7 @@
   .tip-card.open .tip-body { display:block; }
   .tip-read-more { font-size:0.82rem; font-weight:500; color:var(--teal); letter-spacing:0.04em; cursor:pointer; background:none; border:none; padding:0; font-family:var(--sans); display:flex; align-items:center; gap:0.4rem; transition:gap 0.2s; }
   .tip-read-more:hover { gap:0.7rem; }
-  .tip-read-more::after { content:'→'; transition:transform 0.2s; }
+  .tip-read-more::after { content:'→'; }
   .tip-card.open .tip-read-more::after { content:'←'; }
   .tips-cta { background:var(--ink); border-radius:2px; padding:2.5rem 3rem; display:flex; align-items:center; justify-content:space-between; gap:2rem; }
   .tips-cta-text { font-family:var(--serif); font-size:1.6rem; font-weight:300; color:var(--cream); line-height:1.3; }
@@ -339,7 +307,6 @@
 <section id="om-meg">
   <div class="section-label fade-up">Om meg</div>
   <h2 class="section-h2 fade-up delay-1">Boligrådgiver i Oslo — hjelp til kjøp, <em>oppussing</em> og boliginvestering</h2>
-
   <div class="om-inner fade-up delay-2">
     <div class="om-text">
       <p>Leter du etter hjelp til å kjøpe bolig i Oslo? Eller ønsker du å investere i eiendom med gevinst? Jeg er Maya Kobchenko — uavhengig boligrådgiver og byggerådgiver i Oslo, Drammen og omegn. Jeg hjelper deg fra første visning til nøklene er i hånden.</p>
@@ -359,13 +326,9 @@
       <h3>Serviceområde</h3>
       <p>Jeg betjener primært Oslo — inkludert Frogner, Grünerløkka, Sagene, Sentrum, Hellerud, Haugerud, Høybråten, Bøler og Østensjø — samt Drammen og omegn.</p>
     </div>
-
     <div>
-      <!-- Maya photo -->
       <img src="bilder/maya.jpeg" alt="Maya Kobchenko — boligrådgiver Oslo" class="om-photo-maya">
       <div class="om-photo-caption">Maya Kobchenko — boligrådgiver & byggerådgiver i Oslo</div>
-
-      <!-- Stats -->
       <div class="om-highlights">
         <div class="om-highlight"><div class="om-highlight-num">100%</div><div class="om-highlight-label">av alle prosjekter gjennomført med gevinst</div></div>
         <div class="om-highlight"><div class="om-highlight-num">430.000 kr</div><div class="om-highlight-label">snitt spart per kjøp etter rådgivning</div></div>
@@ -380,8 +343,6 @@
       </div>
     </div>
   </div>
-
-  <!-- PHOTO GALLERY — natural proportions via CSS columns (masonry) -->
   <div class="om-gallery fade-up delay-3">
     <div class="om-gallery-label">Bilder fra prosjektene — Frogner, Elisenbergveien</div>
     <div class="om-gallery-grid">
@@ -571,6 +532,10 @@
           <li>Det ikke er gjort endringer som seksjonering, tilbygg, bruksendring eller ombygging av planløsning</li>
           <li>Leiligheten ligger i et veletablert borettslag/sameie med god historikk — som OBOS, USBL</li>
         </ul>
+        <h4>Når bør du absolutt ha kjøperforsikring?</h4>
+        <p>Hvis leiligheten er oppusset, må du innhente all dokumentasjon og bilder, og forstå hva som faktisk er gjort. Mangler du denne dokumentasjonen, er kjøperforsikring ekstra viktig. Har det vært gjort større strukturelle endringer du ikke kan verifisere selv, er det samme råd.</p>
+        <p><strong>Mitt viktigste råd:</strong> Hvis du er i tvil om du trenger kjøperforsikring — ikke gi bud. Det er svært vanskelig å heve et kjøp i etterkant, nesten umulig. Du må derfor tenke deg godt om før du kjøper noe du er usikker på. En bolig du angrer på er langt dyrere enn en du lot gå.</p>
+        <p><strong>Tommelfingerregel:</strong> Jo mer som er endret på boligen — og jo mindre du kjenner til borettslagets historikk — desto viktigere er det å ha forsikringen i ryggen. Og er du fremdeles usikker etter å ha lest dokumentene: la være å by.</p>
       </div>
       <button class="tip-read-more" onclick="toggleTip('tip1', this)">Les mer</button>
     </div>
@@ -651,7 +616,6 @@
     <div class="tips-cta-text">Vil du ha <em>personlig råd</em> tilpasset din situasjon?</div>
     <a href="#booking" class="btn-primary" style="white-space:nowrap;flex-shrink:0;">Book rådgivningstime</a>
   </div>
-
   <p class="tips-add-note">Flere artikler kommer — følg @mayakobchenko_byggservice på Instagram for ukentlige tips.</p>
 </section>
 
@@ -669,7 +633,6 @@
 </footer>
 
 <script>
-  // Tips toggle
   function toggleTip(id, btn) {
     const card = document.getElementById(id);
     const isOpen = card.classList.contains('open');
@@ -677,7 +640,6 @@
     btn.textContent = isOpen ? 'Les mer' : 'Les mindre';
   }
 
-  // Fade-up observer
   const observer = new IntersectionObserver((entries) => {
     entries.forEach(e => { if (e.isIntersecting) e.target.classList.add('visible'); });
   }, { threshold: 0.12 });
