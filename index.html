@@ -5,13 +5,22 @@
 <meta name="google-site-verification" content="pagw5NrNfbaHdTpmxirdxknLK4zjhlRbPluDPpYVLiM" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Boligrådgiver Oslo — Smart eiendomsinvestering</title>
-<meta name="description" content="Maya Kobchenko — eiendomsrådgiver i Oslo. Hjelper deg å kjøpe bolig med gevinst. Objektsøk, oppussingsplan og full investeringsstrategi.">
-<meta name="keywords" content="kjøpe bolig, oppusing, investering, bolig, boligservice, boligrådgiver Oslo, eiendomsrådgivning, Maya Kobchenko, boligkjøp Oslo, investeringsstrategi bolig, byggservice Oslo, tjene på eiendom, tjene på bolig">
+<meta name="description" content="Maya Kobchenko — eiendomsrådgiver i Oslo. Hjelper deg kjøpe bolig med gevinst. Objektsøk, oppussingsplan og full investeringsstrategi.">
+<meta name="keywords" content="kjøpe bolig, oppusing, investering, bolig, boligservice, boligrådgiver Oslo, eiendomsrådgivning, Maya Kobchenko, boligkjøp Oslo, investeringsstrategi bolig, byggservice Oslo">
 <meta name="author" content="Maya Kobchenko">
 <meta property="og:title" content="BoligRådgiver Oslo — Maya Kobchenko">
 <meta property="og:description" content="Kjøp bolig med gevinst, ikke med tap. Eiendomsrådgivning i Oslo.">
 <meta property="og:url" content="https://mayakobchenkobyggservice.no">
 <meta property="og:type" content="website">
+<!-- Google Analytics -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-FMS3ETLVS1"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+  gtag('config', 'G-FMS3ETLVS1');
+</script>
+<!-- End Google Analytics -->
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
@@ -201,6 +210,33 @@
   .footer-links a { font-size:0.78rem; color:rgba(255,255,255,0.3); text-decoration:none; transition:color 0.2s; }
   .footer-links a:hover { color:var(--teal); }
 
+  /* TIPS & RÅD */
+  #tips { background: var(--cream); }
+  .tips-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.5px; background: rgba(26,25,21,0.08); margin-bottom: 3rem; }
+  .tip-card { background: var(--cream); padding: 2.5rem; transition: background 0.25s; position: relative; overflow: hidden; cursor: pointer; }
+  .tip-card::after { content:''; position:absolute; bottom:0; left:0; right:0; height:2px; background:var(--teal); transform:scaleX(0); transform-origin:left; transition:transform 0.3s ease; }
+  .tip-card:hover { background: #F0EDE5; }
+  .tip-card:hover::after { transform: scaleX(1); }
+  .tip-tag { display:inline-block; font-size:0.7rem; font-weight:500; letter-spacing:0.1em; text-transform:uppercase; background:var(--teal-lt); color:var(--teal-dk); padding:0.3rem 0.8rem; border-radius:1px; margin-bottom:1.2rem; }
+  .tip-title { font-family:var(--serif); font-size:1.3rem; font-weight:400; color:var(--ink); margin-bottom:0.75rem; line-height:1.3; }
+  .tip-intro { font-size:0.87rem; color:var(--muted); line-height:1.75; margin-bottom:1.5rem; }
+  .tip-body { font-size:0.87rem; color:var(--muted); line-height:1.85; display:none; }
+  .tip-body p { margin-bottom:1rem; }
+  .tip-body p:last-child { margin-bottom:0; }
+  .tip-body h4 { font-family:var(--serif); font-size:1.05rem; font-weight:400; color:var(--ink); margin:1.4rem 0 0.4rem; }
+  .tip-body ul { padding-left:1.2rem; margin-bottom:1rem; }
+  .tip-body ul li { margin-bottom:0.4rem; font-size:0.87rem; color:var(--muted); line-height:1.7; }
+  .tip-body strong { color:var(--ink); font-weight:500; }
+  .tip-card.open .tip-body { display:block; }
+  .tip-read-more { font-size:0.82rem; font-weight:500; color:var(--teal); letter-spacing:0.04em; cursor:pointer; background:none; border:none; padding:0; font-family:var(--sans); display:flex; align-items:center; gap:0.4rem; transition:gap 0.2s; }
+  .tip-read-more:hover { gap:0.7rem; }
+  .tip-read-more::after { content:'→'; transition:transform 0.2s; }
+  .tip-card.open .tip-read-more::after { content:'←'; }
+  .tips-cta { background:var(--ink); border-radius:2px; padding:2.5rem 3rem; display:flex; align-items:center; justify-content:space-between; gap:2rem; }
+  .tips-cta-text { font-family:var(--serif); font-size:1.6rem; font-weight:300; color:var(--cream); line-height:1.3; }
+  .tips-cta-text em { font-style:italic; color:var(--teal); }
+  .tips-add-note { font-size:0.75rem; color:rgba(26,25,21,0.3); margin-top:1.5rem; font-style:italic; }
+
   .fade-up { opacity:0; transform:translateY(24px); transition:opacity 0.6s ease,transform 0.6s ease; }
   .fade-up.visible { opacity:1; transform:translateY(0); }
   .fade-up.delay-1 { transition-delay:0.1s; }
@@ -216,6 +252,8 @@
     .hero-right { min-height:400px; padding:1.5rem; }
     section { padding:4rem 1.5rem; }
     .services-grid { grid-template-columns:1fr; }
+    .tips-grid { grid-template-columns:1fr; }
+    .tips-cta { flex-direction:column; padding:2rem; }
     .om-inner { grid-template-columns:1fr; gap:2.5rem; }
     .om-gallery-grid { columns: 2; }
     .case-card { flex:0 0 100%; min-width:100%; }
@@ -241,6 +279,7 @@
     <li><a href="#services">Tjenester</a></li>
     <li><a href="#om-meg">Om meg</a></li>
     <li><a href="#cases">Eksempler</a></li>
+    <li><a href="#tips">Tips & råd</a></li>
     <li><a href="#process">Prosess</a></li>
     <li><a href="#booking">Book time</a></li>
     <li><a href="#contact" class="nav-cta">Kontakt</a></li>
@@ -323,7 +362,7 @@
 
     <div>
       <!-- Maya photo -->
-      <img src="bilder/maya.jpeg" alt="Maya Kobchenko — boligrådgiver Oslo" class="om-photo-maya">
+      <img src="bilder/maya.jpg" alt="Maya Kobchenko — boligrådgiver Oslo" class="om-photo-maya">
       <div class="om-photo-caption">Maya Kobchenko — boligrådgiver & byggerådgiver i Oslo</div>
 
       <!-- Stats -->
@@ -351,7 +390,7 @@
       <img src="bilder/soverom_elisen.jpg" alt="Soverom — Frogner Elisenbergveien">
       <img src="bilder/Kjokken_elisen.jpg" alt="Kjøkken — Frogner Elisenbergveien">
       <img src="bilder/spisestua_elisen.jpg" alt="Spisestue — Frogner Elisenbergveien">
-      <img src="bilder/Soverom2.jpg" alt="Soverom — Frogner Elisenbergveien">
+      <img src="bilder/lampe_elisen.jpg" alt="Detalj — Frogner Elisenbergveien">
     </div>
   </div>
 </section>
@@ -510,12 +549,122 @@
   </div>
 </section>
 
+<!-- TIPS & RÅD -->
+<section id="tips">
+  <div class="section-label fade-up">Tips & råd</div>
+  <h2 class="section-h2 fade-up delay-1">Gratis råd fra <em>erfaring</em></h2>
+  <p class="section-intro fade-up delay-2">Artikler om boligkjøp, oppussing og investering — basert på hva jeg faktisk har lært fra egne prosjekter i Oslo-markedet.</p>
+
+  <div class="tips-grid fade-up delay-2">
+
+    <!-- ARTIKKEL 1 -->
+    <div class="tip-card" id="tip1">
+      <span class="tip-tag">Forsikring</span>
+      <h3 class="tip-title">Kjøperforsikring vs selgerforsikring — trenger du begge?</h3>
+      <p class="tip-intro">De fleste kjøpere betaler for forsikring de ikke trenger. Her er når du faktisk bør ha den — og når du trygt kan droppe den.</p>
+      <div class="tip-body">
+        <p><strong>Selgerforsikring — alltid verdt det.</strong> Selgerforsikringen beskytter deg mot krav fra kjøper i etterkant av salget. Uansett hva boligen koster og uansett stand — kjøp den alltid. En reklamasjonssak kan koste langt mer enn forsikringspremien.</p>
+        <h4>Kjøperforsikring — her kan du spare penger</h4>
+        <p>Kjøperforsikring er derimot ikke alltid nødvendig. Du kan sannsynligvis droppe den hvis:</p>
+        <ul>
+          <li>Du kjøper av en privatperson (ikke en profesjonell utvikler eller flipper)</li>
+          <li>Det ikke er gjort endringer som seksjonering, tilbygg, bruksendring eller ombygging av planløsning</li>
+          <li>Leiligheten ligger i et veletablert borettslag med god historikk — som OBOS</li>
+        </ul>
+        <h4>Når bør du absolutt ha kjøperforsikring?</h4>
+        <p>Hvis leiligheten er oppusset, må du innhente all dokumentasjon og bilder, og forstå hva som faktisk er gjort. Mangler du denne dokumentasjonen, er kjøperforsikring ekstra viktig. Har det vært gjort større strukturelle endringer du ikke kan verifisere selv, er det samme råd.</p>
+        <p><strong>Tommelfingerregel:</strong> Jo mer som er endret på boligen — og jo mindre du kjenner til borettslagets historikk — desto viktigere er det å ha forsikringen i ryggen.</p>
+      </div>
+      <button class="tip-read-more" onclick="toggleTip('tip1', this)">Les mer</button>
+    </div>
+
+    <!-- ARTIKKEL 2 -->
+    <div class="tip-card" id="tip2">
+      <span class="tip-tag">Borettslag</span>
+      <h3 class="tip-title">Slik vurderer du et borettslags økonomi før du kjøper</h3>
+      <p class="tip-intro">Fellesgjeld og fellesutgifter kan utgjøre en stor del av den reelle kjøpsprisen. Slik leser du tallene riktig — og unngår ubehagelige overraskelser.</p>
+      <div class="tip-body">
+        <p>Mange fokuserer utelukkende på prisantydningen og glemmer at et borettslags økonomi er like viktig som boligens stand. Her er hva du bør sjekke.</p>
+        <h4>Fellesgjeld — hva betyr det egentlig?</h4>
+        <p>Fellesgjeld er borettslagets lån, og du overtar din andel av dette når du kjøper. <strong>Den reelle kjøpsprisen er prisantydning + din andel av fellesgjelden.</strong> En leilighet til 3 millioner med 800 000 i fellesgjeld koster deg faktisk 3,8 millioner totalt.</p>
+        <h4>Dette bør du sjekke i årsregnskapet</h4>
+        <ul>
+          <li><strong>Egenkapital:</strong> Er den positiv? Negativ egenkapital er et varseltegn.</li>
+          <li><strong>Vedlikeholdsplan:</strong> Har borettslaget en plan for fremtidig vedlikehold? Mangler det en plan, kan det komme store uforutsette utgifter.</li>
+          <li><strong>Renter på fellesgjelden:</strong> Er lånet fastrente eller flytende? Flytende rente betyr at felleskostnadene kan stige.</li>
+          <li><strong>IN-ordning:</strong> Kan du innfri din andel av fellesgjelden? Dette kan spare deg mye i månedlige kostnader.</li>
+        </ul>
+        <h4>Veletablerte borettslag er tryggere</h4>
+        <p>Borettslag som OBOS har strenge krav til vedlikehold, god historikk og solid økonomi. Dette gir naturlig trygghet — og er en av grunnene til at du ofte kan droppe kjøperforsikring i slike lag.</p>
+        <p><strong>Tips:</strong> Be alltid om siste årsregnskap og årsberetning. Lurer du på noe, ta kontakt med styret direkte — de er pliktige til å svare.</p>
+      </div>
+      <button class="tip-read-more" onclick="toggleTip('tip2', this)">Les mer</button>
+    </div>
+
+    <!-- ARTIKKEL 3 -->
+    <div class="tip-card" id="tip3">
+      <span class="tip-tag">Investering</span>
+      <h3 class="tip-title">Flipp i Oslo — hva gir faktisk gevinst og hva er bortkastede penger?</h3>
+      <p class="tip-intro">Ikke alle oppussingsprosjekter gir avkastning. Her er hva jeg har lært fra egne flipp-prosjekter i Oslo — hva som lønte seg, og hva jeg aldri ville gjort igjen.</p>
+      <div class="tip-body">
+        <p>En vellykket flipp starter ikke med hammeren — den starter med riktig kjøpspris og en klar strategi. Her er mine erfaringer fra prosjekter i Sentrum, Hellerud, Haugerud og Høybråten.</p>
+        <h4>Det viktigste: kjøpsprisen avgjør alt</h4>
+        <p>Gevinsten på en flipp bestemmes i budrunden, ikke på visningen. Betaler du for mye, hjelper det lite hvor bra du pusser opp. <strong>Regn alltid baklengs:</strong> hva er realistisk salgspris etter oppussing? Trekk fra oppussingsbudsjett, transaksjonskostnader og din tidsbruk — det som er igjen er hva du maksimalt kan by.</p>
+        <h4>Hva gir faktisk god avkastning</h4>
+        <ul>
+          <li><strong>Bad:</strong> Et nytt bad øker verdien betydelig, men bare hvis det er gjort med godkjent håndverker og dokumentasjon. Ufaglært arbeid på bad kan bli en kostbar affære ved salg.</li>
+          <li><strong>Planløsning:</strong> Å gjøre om en 3-roms til 4-roms (som i Hellerud-prosjektet mitt) kan gi rekordhøy salgspris i området.</li>
+          <li><strong>Kjøkken:</strong> Et pent, enkelt kjøkken fra Ikea med gode fronter ser dyrt ut og koster lite.</li>
+          <li><strong>Styling:</strong> Profesjonell styling ved salg kan alene øke budet med 200–400 000 kr. Det er den beste avkastningen per krone du kan få.</li>
+        </ul>
+        <h4>Hva er bortkastede penger</h4>
+        <ul>
+          <li>Altfor eksklusive materialer i et område med lavt prisnivå — kjøperne betaler ikke ekstra for marmor på Haugerud.</li>
+          <li>Oppgradering av ting som ikke synes — ny elektrisk uten at det er nødvendig, nye rør bak fliser ingen ser.</li>
+          <li>Større strukturelle endringer uten byggetillatelse — dette kan blokkere salget helt.</li>
+        </ul>
+        <p><strong>Min anbefaling:</strong> Lag alltid en detaljert oppussingsplan med budsjett FØR du kjøper — ikke etterpå. Da vet du nøyaktig hva du kan by.</p>
+      </div>
+      <button class="tip-read-more" onclick="toggleTip('tip3', this)">Les mer</button>
+    </div>
+
+    <!--
+    =====================================================
+    LEGG TIL FLERE ARTIKLER HER — kopier blokken under:
+    =====================================================
+
+    <div class="tip-card" id="tip4">
+      <span class="tip-tag">Kategori</span>
+      <h3 class="tip-title">Tittel på artikkelen</h3>
+      <p class="tip-intro">En kort introduksjon på 2 setninger som vises alltid.</p>
+      <div class="tip-body">
+        <p>Fulltekst her...</p>
+        <h4>Undertittel</h4>
+        <p>Mer tekst...</p>
+      </div>
+      <button class="tip-read-more" onclick="toggleTip('tip4', this)">Les mer</button>
+    </div>
+
+    =====================================================
+    -->
+
+  </div>
+
+  <div class="tips-cta fade-up delay-3">
+    <div class="tips-cta-text">Vil du ha <em>personlig råd</em> tilpasset din situasjon?</div>
+    <a href="#booking" class="btn-primary" style="white-space:nowrap;flex-shrink:0;">Book rådgivningstime</a>
+  </div>
+
+  <p class="tips-add-note">Flere artikler kommer — følg @mayakobchenko_byggservice på Instagram for ukentlige tips.</p>
+</section>
+
 <footer>
   <div class="footer-logo">Bolig<span>Rådgiver</span></div>
   <div class="footer-copy">© 2025 · Eiendomsrådgivning Oslo</div>
   <div class="footer-links">
     <a href="#services">Tjenester</a>
     <a href="#om-meg">Om meg</a>
+    <a href="#tips">Tips & råd</a>
     <a href="#cases">Eksempler</a>
     <a href="#booking">Book time</a>
     <a href="#contact">Kontakt</a>
@@ -523,6 +672,15 @@
 </footer>
 
 <script>
+  // Tips toggle
+  function toggleTip(id, btn) {
+    const card = document.getElementById(id);
+    const isOpen = card.classList.contains('open');
+    card.classList.toggle('open');
+    btn.textContent = isOpen ? 'Les mer' : 'Les mindre';
+  }
+
+  // Fade-up observer
   const observer = new IntersectionObserver((entries) => {
     entries.forEach(e => { if (e.isIntersecting) e.target.classList.add('visible'); });
   }, { threshold: 0.12 });
